@@ -31,12 +31,25 @@ a:active {
     sans-serif;
   font-weight: 300;
 }
+h1, h2, h3, h4, h5 {
+  all:unset;
+}
 
-h1,
-h2,
-h3,
-h4,
-h5,
+h1 {
+  font-size: 1.6rem;
+}
+h2 {
+  font-size: 1.4rem;
+}
+h3 {
+  font-size: 1.2rem;
+}
+h4 {
+  font-size: 1rem;
+}
+h5 {
+  font-size: 0.8rem;
+}
 h6 {
-  all: unset;
+  font-size: 0.6rem;
 }

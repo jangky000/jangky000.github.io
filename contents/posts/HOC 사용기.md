@@ -13,13 +13,11 @@ date: 2021.11.04
 - **기본 설정 기간** 역시 전역 상태 데이터다.
 - 각각의 페이지는 Calendar Selector에서 선택한 기간에 따라 다른 데이터를 불러와 출력해야 한다.
 
-<div style="display:flex;">
-    <img src="https://user-images.githubusercontent.com/46799722/140294319-00c25762-be33-4452-93ad-b9ffec94b290.png" />
-    <img src="https://user-images.githubusercontent.com/46799722/140294330-2092adfa-5527-4b24-a23b-2c75838e98f7.png"/>
-</div>
-<div style="display:flex;">
-    <img src="https://user-images.githubusercontent.com/46799722/140294336-21ddcf01-228d-4ff0-b74c-4148139496cc.png"/>
-    <img src="https://user-images.githubusercontent.com/46799722/140294339-c4061391-c5a0-47ab-b619-4a34e8a11ec8.png"/>
+<div style="display: grid;grid-template-columns: repeat(2, 1fr);grid-column-gap: 20px;grid-row-gap: 20px;">
+    <img src="https://user-images.githubusercontent.com/46799722/140294319-00c25762-be33-4452-93ad-b9ffec94b290.png" style="width:100%;"/>
+    <img src="https://user-images.githubusercontent.com/46799722/140294330-2092adfa-5527-4b24-a23b-2c75838e98f7.png" style="width:100%;"/>
+    <img src="https://user-images.githubusercontent.com/46799722/140294336-21ddcf01-228d-4ff0-b74c-4148139496cc.png" style="width:100%;"/>
+    <img src="https://user-images.githubusercontent.com/46799722/140294339-c4061391-c5a0-47ab-b619-4a34e8a11ec8.png" style="width:100%;"/>
 </div>
 
 # 횡단 관심사
@@ -61,7 +59,7 @@ date: 2021.11.04
 
 # 사용 예제
 
-````TypeScript
+````typescript
 // HOC 함수: withCalendarDateRange
 import React, { FC, useMemo } from 'react';
 import moment from 'moment';
@@ -104,7 +102,7 @@ export const withCalendarDateRange = <OriginProps,>(WrappedComponent: FC<Wrapper
 };
 ````
 
-````TypeScript
+````typescript
 // 공통 로직을 추가할 컴포넌트: WrappedVisitStatus
 // Props를 통해 selectableDateRange, initSelectedDateRange 데이터를 받는다.
 import React, { useState } from 'react';
@@ -136,7 +134,7 @@ const WrappedVisitStatus = ({ selectableDateRange, initSelectedDateRange }: Wrap
 export const VisitStatus = withCalendarDateRange(WrappedVisitStatus);
 ````
 
-````TypeScript
+````typescript
 // 공통 로직이 추가된 컴포넌트 사용: Dashboard
 import React, { FC, useState } from 'react';
 import { BGTab, ITab } from './components/BGTab';

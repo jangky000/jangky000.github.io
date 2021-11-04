@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "posts": "node scripts/getPosts.js",
-    "sitemap":"node scripts/sitemap-generator.js",
+    "sitemap": "node scripts/sitemap-generator.js",
     "prebuild": "yarn run posts && yarn run sitemap",
     "build": "next build",
     "prestart": "next build",
@@ -13,7 +13,6 @@
     "lint": "next lint",
     "deploy": "yarn run build && next export && touch out/.nojekyll && git add -f out/ && git checkout -b temp-for-deploy-gh-pages && git commit -m \"Deploy Next.js to gh-pages\" && git subtree split --prefix out -b gh-pages && git push -f origin gh-pages:gh-pages && git branch -D gh-pages && git checkout main && git branch -D temp-for-deploy-gh-pages",
     "deploy:window": "yarn run build && next export && fsutil file createnew out/.nojekyll 0 && git add -f out/ && git checkout -b temp-for-deploy-gh-pages && git commit -m \"Deploy Next.js to gh-pages\" && git subtree split --prefix out -b gh-pages && git push -f origin gh-pages:gh-pages && git branch -D gh-pages && git checkout main && git branch -D temp-for-deploy-gh-pages"
-    
   },
   "dependencies": {
     "@material-ui/core": "^4.12.3",
@@ -25,8 +24,9 @@
     "qs": "^6.10.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-markdown": "4.2.2",
+    "react-markdown": "4.0.1",
     "react-query": "^3.21.1",
+    "react-syntax-highlighter": "15.4.4",
     "recoil": "^0.4.1",
     "sass": "^1.35.2"
   },
@@ -34,6 +34,7 @@
     "@types/lodash": "^4.14.172",
     "@types/qs": "^6.9.7",
     "@types/react": "17.0.14",
+    "@types/react-syntax-highlighter": "^13.5.2",
     "@types/styled-jsx": "^2.2.9",
     "@typescript-eslint/eslint-plugin": "^4.28.3",
     "@typescript-eslint/parser": "^4.28.3",

@@ -1,7 +1,9 @@
 import Head from 'next/head';
+import Link from 'next/link';
 import { Header } from '../components/organisms/Header';
 import { Footer } from '../components/organisms/Footer';
 import styles from '../styles/Index.module.scss';
+import postlist from '../jsons/posts.json';
 
 function Home() {
   return (
@@ -39,6 +41,29 @@ function Home() {
         <div>Welcome!</div>
         <div>FE 블로그 | @jangky000</div>
         <div>FE 개발자로 일하면서 겪은 경험담을 정리합니다.</div>
+
+        <div style={{ marginTop: '20px' }} />
+
+        <div>
+          <div className="postlist">
+            <h1 className="title">All Posts</h1>
+            {postlist.length
+                && postlist.map((post) => (
+                  <div key={post.id} className="post-card" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <h2><Link href={`/posts/${post.title}`}><a>{post.title}</a></Link></h2>
+                    <small>
+                      {post.date}
+                      {' '}
+                      발행
+                      {' '}
+                      @
+                      {post.author}
+                    </small>
+                  </div>
+                ))}
+          </div>
+
+        </div>
       </main>
 
       <Footer />

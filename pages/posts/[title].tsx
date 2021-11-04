@@ -1,17 +1,29 @@
 import Head from 'next/head';
-import Markdown from 'react-markdown';
-import postlist from '../jsons/posts.json';
-import { Header } from '../components/organisms/Header';
-import { Footer } from '../components/organisms/Footer';
-import styles from '../styles/Posts.module.scss';
+import { useRouter } from 'next/router';
+import ReactMarkdown from 'react-markdown';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import postlist from '../../jsons/posts.json';
+import { Header } from '../../components/organisms/Header';
+import { Footer } from '../../components/organisms/Footer';
+import styles from '../../styles/Posts.module.scss';
+
+const CodeBlock = ({ language, value }:any) => (
+  <SyntaxHighlighter language={language}>
+    {value}
+  </SyntaxHighlighter>
+);
 
 function Posts() {
+  const router = useRouter();
+  const { title } = router.query;
+
   const fetchedPost:any = {};
-  if (Array.isArray(postlist)) {
-    fetchedPost.title = postlist[0].title ? postlist[0].title : 'No title given';
-    fetchedPost.date = postlist[0].date ? postlist[0].date : 'No date given';
-    fetchedPost.author = postlist[0].author ? postlist[0].author : 'No author given';
-    fetchedPost.content = postlist[0].content ? postlist[0].content : 'No content given';
+  if (Array.isArray(postlist) && typeof title === 'string') {
+    const currentPost = postlist.find((post) => post.title.replace('\r', '') === decodeURIComponent(title));
+    fetchedPost.title = currentPost?.title || 'No title given';
+    fetchedPost.date = currentPost?.date || 'No date given';
+    fetchedPost.author = currentPost?.author || 'No author given';
+    fetchedPost.content = currentPost?.content || 'No content given';
   }
   return (
     <div className={styles.container}>
@@ -58,7 +70,11 @@ function Posts() {
           {fetchedPost.author}
         </small>
         <hr />
-        <Markdown>{fetchedPost.content}</Markdown>
+        <ReactMarkdown
+          escapeHtml={false}
+          source={fetchedPost.content}
+          renderers={{ code: CodeBlock }}
+        />
       </main>
 
       <Footer />
