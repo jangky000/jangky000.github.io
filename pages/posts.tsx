@@ -2,10 +2,10 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import postlist from '../../jsons/posts.json';
-import { Header } from '../../components/organisms/Header';
-import { Footer } from '../../components/organisms/Footer';
-import styles from '../../styles/Posts.module.scss';
+import postlist from '../jsons/posts.json';
+import { Header } from '../components/organisms/Header';
+import { Footer } from '../components/organisms/Footer';
+import styles from '../styles/Posts.module.scss';
 
 const CodeBlock = ({ language, value }:any) => (
   <SyntaxHighlighter language={language}>
@@ -19,7 +19,9 @@ function Posts() {
 
   const fetchedPost:any = {};
   if (Array.isArray(postlist) && typeof title === 'string') {
-    const currentPost = postlist.find((post) => post.title.replace('\r', '') === decodeURIComponent(title));
+    const currentPost = postlist.find(
+      (post) => post.title.replace('\r', '') === title.replace(/-/g, ' '),
+    );
     fetchedPost.title = currentPost?.title || 'No title given';
     fetchedPost.date = currentPost?.date || 'No date given';
     fetchedPost.author = currentPost?.author || 'No author given';

@@ -53,3 +53,7 @@ h5 {
 h6 {
   font-size: 0.6rem;
 }
+
+code {
+  font-size: 14px;
+}
