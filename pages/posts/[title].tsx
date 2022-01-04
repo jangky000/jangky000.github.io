@@ -2,10 +2,11 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import postlist from '../jsons/posts.json';
-import { Header } from '../components/organisms/Header';
-import { Footer } from '../components/organisms/Footer';
-import styles from '../styles/Posts.module.scss';
+import { FC } from 'react';
+import postlist from '../../jsons/posts.json';
+import { Header } from '../../components/organisms/Header';
+import { Footer } from '../../components/organisms/Footer';
+import styles from '../../styles/Posts.module.scss';
 
 const CodeBlock = ({ language, value }:any) => (
   <SyntaxHighlighter language={language}>
@@ -13,20 +14,30 @@ const CodeBlock = ({ language, value }:any) => (
   </SyntaxHighlighter>
 );
 
-function Posts() {
+const getPost = (title: string | string[] | undefined) => {
+  const initPost = {
+    id: 0,
+    title: '제목 없음',
+    date: '알 수 없음',
+    author: 'jangky000',
+    content: '내용 없음',
+  };
+
+  if (typeof title !== 'string') return initPost;
+  if (!Array.isArray(postlist) && typeof title === 'string') return initPost;
+
+  const currentPost = postlist.find(
+    (post) => post.title.replace('\r', '') === title.replace(/-/g, ' '),
+  );
+  const fetchedPost = { ...initPost, ...currentPost };
+  return fetchedPost;
+};
+
+const Posts:FC = () => {
   const router = useRouter();
   const { title } = router.query;
+  const fetchedPost = getPost(title);
 
-  const fetchedPost:any = {};
-  if (Array.isArray(postlist) && typeof title === 'string') {
-    const currentPost = postlist.find(
-      (post) => post.title.replace('\r', '') === title.replace(/-/g, ' '),
-    );
-    fetchedPost.title = currentPost?.title || 'No title given';
-    fetchedPost.date = currentPost?.date || 'No date given';
-    fetchedPost.author = currentPost?.author || 'No author given';
-    fetchedPost.content = currentPost?.content || 'No content given';
-  }
   return (
     <div className={styles.container}>
       <Head>
@@ -82,6 +93,6 @@ function Posts() {
       <Footer />
     </div>
   );
-}
+};
 
 export default Posts;

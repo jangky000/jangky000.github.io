@@ -6,7 +6,6 @@
     "dev": "next dev",
     "posts": "node scripts/getPosts.js",
     "sitemap": "node scripts/sitemap-generator.js",
-    "prebuild": "yarn run posts && yarn run sitemap",
     "build": "next build",
     "prestart": "next build",
     "start": "next start",
@@ -15,6 +14,8 @@
     "deploy:window": "yarn run build && next export && fsutil file createnew out/.nojekyll 0 && git add -f out/ && git checkout -b temp-for-deploy-gh-pages && git commit -m \"Deploy Next.js to gh-pages\" && git subtree split --prefix out -b gh-pages && git push -f origin gh-pages:gh-pages && git branch -D gh-pages && git checkout main && git branch -D temp-for-deploy-gh-pages"
   },
   "dependencies": {
+    "@emotion/react": "^11.1.5",
+    "@emotion/styled": "^11.3.0",
     "@material-ui/core": "^4.12.3",
     "@material-ui/lab": "^4.0.0-alpha.60",
     "axios": "^0.21.1",
@@ -31,6 +32,8 @@
     "sass": "^1.35.2"
   },
   "devDependencies": {
+    "@emotion/babel-plugin": "^11.3.0",
+    "@emotion/eslint-plugin": "^11.2.0",
     "@types/lodash": "^4.14.172",
     "@types/qs": "^6.9.7",
     "@types/react": "17.0.14",

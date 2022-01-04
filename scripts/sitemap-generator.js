@@ -2,6 +2,7 @@ const path = require('path');
 const fs = require('fs');
 const globby = require('globby');
 const prettier = require('prettier');
+const postlist = require('../jsons/posts.json');
 
 const getDate = new Date().toISOString();
 
@@ -16,6 +17,7 @@ const formatted = (sitemap) => prettier.format(sitemap, { parser: 'html' });
     path.join(__dirname, '../pages/*.tsx'),
     // exclude
     path.join('!', __dirname, '../pages/_*.tsx'),
+    path.join('!', __dirname, '../pages/**/[title].tsx'),
   ]);
 
   const pagesSitemap = `
@@ -36,6 +38,13 @@ const formatted = (sitemap) => prettier.format(sitemap, { parser: 'html' });
     .join('')}
   `;
 
+  const postSitemap = postlist.map((post) => `
+    <url>
+      <loc>${YOUR_AWESOME_DOMAIN}/posts/${post.title.replace(/ /g, '-')}</loc>
+      <lastmod>${getDate}</lastmod>
+    </url>
+  `);
+
   const generatedSitemap = `
     <?xml version="1.0" encoding="UTF-8"?>
     <urlset
@@ -44,6 +53,7 @@ const formatted = (sitemap) => prettier.format(sitemap, { parser: 'html' });
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
     >
       ${pagesSitemap}
+      ${postSitemap}
     </urlset>
   `;
 
