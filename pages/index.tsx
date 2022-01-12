@@ -46,7 +46,7 @@ function Home() {
 
         <div>
           <div className="postlist">
-            <h1 className="title">All Posts</h1>
+            <h1 className="title">모든 게시글</h1>
             {postlist.length
                 && postlist.map((post) => (
                   <div key={post.id} className="post-card" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
