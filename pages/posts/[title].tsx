@@ -26,8 +26,10 @@ const getPost = (title: string | string[] | undefined) => {
   if (typeof title !== 'string') return initPost;
   if (!Array.isArray(postlist) && typeof title === 'string') return initPost;
 
+  const decodedTitle = decodeURIComponent(title);
+
   const currentPost = postlist.find(
-    (post) => post.title.replace('\r', '') === title.replace(/-/g, ' '),
+    (post) => post.title.replace('\r', '') === decodedTitle.replace(/-/g, ' '),
   );
   const fetchedPost = { ...initPost, ...currentPost };
   return fetchedPost;
