@@ -50,7 +50,7 @@ function Home() {
             {postlist.length
                 && postlist.map((post) => (
                   <div key={post.id} className="post-card" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <h2><Link href={`/posts/${post.title.replace(/ /g, '-')}`}><a>{post.title}</a></Link></h2>
+                    <h2><Link href="/posts/[title]" as={`/posts/${post.id.toString()}`}><a>{post.title}</a></Link></h2>
                     <small>
                       {post.date}
                       {' '}

@@ -40,7 +40,7 @@ const formatted = (sitemap) => prettier.format(sitemap, { parser: 'html' });
 
   const postSitemap = postlist.map((post) => `
     <url>
-      <loc>${YOUR_AWESOME_DOMAIN}/posts/${post.title.replace(/ /g, '-')}</loc>
+      <loc>${YOUR_AWESOME_DOMAIN}/posts/${post.id}</loc>
       <lastmod>${getDate}</lastmod>
     </url>
   `);

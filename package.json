@@ -7,6 +7,7 @@
     "posts": "node scripts/getPosts.js",
     "sitemap": "node scripts/sitemap-generator.js",
     "build": "next build",
+    "export": "next export",
     "prestart": "next build",
     "start": "next start",
     "lint": "next lint",
