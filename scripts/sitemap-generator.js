@@ -6,7 +6,7 @@ const postlist = require('../jsons/posts.json');
 
 const getDate = new Date().toISOString();
 
-const YOUR_AWESOME_DOMAIN = 'https://jangky000.github.io/blog';
+const YOUR_AWESOME_DOMAIN = 'https://jangky000.github.io';
 
 const formatted = (sitemap) => prettier.format(sitemap, { parser: 'html' });
 
@@ -40,7 +40,7 @@ const formatted = (sitemap) => prettier.format(sitemap, { parser: 'html' });
 
   const postSitemap = postlist.map((post) => `
     <url>
-      <loc>${YOUR_AWESOME_DOMAIN}/posts/${post.id}</loc>
+      <loc>${YOUR_AWESOME_DOMAIN}/posts/${encodeURIComponent(post.title.replace(/\s+/g, ''))}</loc>
       <lastmod>${getDate}</lastmod>
     </url>
   `);

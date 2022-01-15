@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "posts": "node scripts/getPosts.js",
+    "pages": "node scripts/getPages.js",
     "sitemap": "node scripts/sitemap-generator.js",
     "build": "next build",
     "export": "next export",

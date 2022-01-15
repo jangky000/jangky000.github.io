@@ -6,6 +6,7 @@ import postlist from '../../jsons/posts.json';
 import { Header } from '../../components/organisms/Header';
 import { Footer } from '../../components/organisms/Footer';
 import styles from '../../styles/Posts.module.scss';
+import { encodeURL, removeSpace } from '../../lib/utf8';
 
 const CodeBlock = ({ language, value }:any) => (
   <SyntaxHighlighter language={language}>
@@ -70,16 +71,16 @@ const Posts:FC = ({ post }: any) => (
 );
 
 export async function getStaticPaths() {
-  const pathList = postlist.map((post) => ({ params: { title: post.id.toString() } }));
+  const pathList = postlist.map((post) => ({ params: { title: encodeURL(post.title.replace(/[\r,\n]/g, '')) } }));
   return {
     paths: pathList,
-    fallback: false, // false or 'blocking'
+    fallback: 'blocking',
   };
 }
 
 export async function getStaticProps(context:any) {
   const { title } = context.params;
-  const post = postlist.find((item) => item.id.toString() === title);
+  const post = postlist.find((item) => removeSpace(item.title) === decodeURIComponent(title));
   return {
     props: { post },
   };
