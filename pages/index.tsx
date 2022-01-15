@@ -4,7 +4,7 @@ import { Header } from '../components/organisms/Header';
 import { Footer } from '../components/organisms/Footer';
 import styles from '../styles/Index.module.scss';
 import postlist from '../jsons/posts.json';
-import { encodeURL } from '../lib/utf8';
+import { removeSpace } from '../lib/utf8';
 
 function Home() {
   return (
@@ -51,7 +51,7 @@ function Home() {
             {postlist.length
                 && postlist.map((post) => (
                   <div key={post.id} className="post-card" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <h2><Link href="/posts/[title]" as={`/posts/${encodeURL(post.title)}`}><a>{post.title}</a></Link></h2>
+                    <h2><Link href="/posts/[title]" as={`/posts/${removeSpace(post.title)}`}><a>{post.title}</a></Link></h2>
                     <small>
                       {post.date}
                       {' '}
