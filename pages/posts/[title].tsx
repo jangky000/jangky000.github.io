@@ -3,11 +3,23 @@ import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { FC } from 'react';
 import { useRouter } from 'next/router';
+import styled from '@emotion/styled';
 import postlist from '../../jsons/posts.json';
 import { Header } from '../../components/organisms/Header';
 import { Footer } from '../../components/organisms/Footer';
 import styles from '../../styles/Posts.module.scss';
 import { removeSpace } from '../../lib/utf8';
+
+const StyledPostLayout = styled.main`
+  label: post-layout;
+  
+  margin: 30px auto;
+  max-width: 850px;
+
+  img {
+    width: 100%;
+  }
+`;
 
 const CodeBlock = ({ language, value }:any) => (
   <SyntaxHighlighter language={language}>
@@ -53,7 +65,7 @@ const Posts:FC = ({ postInfo }: any) => {
 
       <Header />
 
-      <main className={styles.main}>
+      <StyledPostLayout>
         <div>
           <h2>{postInfo.title}</h2>
         </div>
@@ -72,7 +84,7 @@ const Posts:FC = ({ postInfo }: any) => {
           source={postInfo.content}
           renderers={{ code: CodeBlock }}
         />
-      </main>
+      </StyledPostLayout>
 
       <Footer />
     </div>

@@ -15,7 +15,6 @@ const getPosts = () => {
       const obj = {};
       let post;
       const contents = fs.readFileSync(`${dirPath}/${file}`, 'utf8');
-
       const getMetadataIndices = (acc, elem, i) => {
         if (/^---/.test(elem)) {
           acc.push(i);
@@ -57,13 +56,8 @@ const getPosts = () => {
     });
 
     const sortedList = postlist.sort((a, b) => (a.id < b.id ? 1 : -1));
-    console.log('>> json length:', sortedList.length);
-    if (files.length !== sortedList.length) {
-      console.log(
-        '%c >>>>>>>>> Post parsing에 에러가 있습니다. <<<<<<<<<<<',
-        'background-color:red; color:#ffffff; font-size:23px;',
-      );
-    }
+    console.log('>> json length: ', sortedList.length);
+    if (files.length !== sortedList.length) console.log('>> 파싱 에러 <<');
     const data = JSON.stringify(sortedList);
     fs.writeFileSync('jsons/posts.json', data);
   });
