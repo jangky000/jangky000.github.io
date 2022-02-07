@@ -1,10 +1,14 @@
-export const theme = {
+import { Theme } from '@emotion/react';
+
+// 참조: https://color.adobe.com/ko/explore
+export const theme:Theme = {
   colors: {
-    PictonBlue: '#3ACBE8',
-    BatteryChargedBlue: '#1CA3DE',
-    BlueCola: '#0D85D8',
-    TrueBlue: '#0160C9',
-    CrayolasAbsoluteZero: '#0041C7',
+    dark: '#95998A',
+    green: '#BDCC94',
+    yellow: '#FFEC67',
+    white: '#FFFFFF',
+    blue: '#A9B6CC',
+
   },
 };
 

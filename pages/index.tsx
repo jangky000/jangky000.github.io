@@ -11,26 +11,29 @@ const StyledHomeLayout = styled.main`
   label: home-layout;
 
   margin: 30px auto;
+  width: 80%;
   max-width: 850px;
 
   .introduce {
-    padding: 10px;
+    padding: 0.5rem;
     margin-bottom: 20px;
-    background-color: #ddd;
     border-radius: 8px;
   }
 
   .postlist .title {
-    font-style: italic;
-    text-decoration: underline;
+    color: white;
+    background-color: #95998A;
+    border-radius: 4px;
     margin-bottom: 20px;
+    padding: 0.5rem;
+    width: fit-content;
   }
 
   .post-card {
     min-height: 100px;
     display: flex;
     flex-direction: column;
-    border-bottom: 1px solid #ddd;
+    // border-bottom: 1px solid #ddd;
 
     h2 {
       font-size: 1.2rem;
