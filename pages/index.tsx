@@ -17,12 +17,11 @@ const StyledHomeLayout = styled.main`
   .introduce {
     padding: 0.5rem;
     margin-bottom: 20px;
-    border-radius: 8px;
   }
 
-  .postlist .title {
-    color: white;
-    background-color: #95998A;
+  .postlist .tab {
+    color: #fff;
+    background-color: ${({ theme }) => theme.colors.dark};
     border-radius: 4px;
     margin-bottom: 20px;
     padding: 0.5rem;
@@ -33,7 +32,6 @@ const StyledHomeLayout = styled.main`
     min-height: 100px;
     display: flex;
     flex-direction: column;
-    // border-bottom: 1px solid #ddd;
 
     h2 {
       font-size: 1.2rem;
@@ -100,9 +98,9 @@ function Home() {
 
         <div>
           <div className="postlist">
-            <div className="title">모든 게시글</div>
-            {postlist.length
-              && postlist.map((post) => (
+            <div className="tab">모든 게시글</div>
+            {postlist.length &&
+              postlist.map(post => (
                 <div key={post.id} className="post-card">
                   <h2>
                     <Link
@@ -112,15 +110,8 @@ function Home() {
                       <a>{post.title}</a>
                     </Link>
                   </h2>
-                  <small>
-                    {post.date}
-                    {' '}
-                    발행
-                  </small>
-                  <small>
-                    @
-                    {post.author}
-                  </small>
+                  <small>{post.date} 발행</small>
+                  <small>@{post.author}</small>
                 </div>
               ))}
           </div>

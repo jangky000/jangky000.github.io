@@ -1,14 +1,21 @@
-import { Theme } from '@emotion/react';
+export interface Palette {
+  colors: {
+    dark: string;
+    green: string;
+    yellow: string;
+    white: string;
+    blue: string;
+  };
+}
 
 // 참조: https://color.adobe.com/ko/explore
-export const theme:Theme = {
+export const theme: Palette = {
   colors: {
     dark: '#95998A',
     green: '#BDCC94',
     yellow: '#FFEC67',
     white: '#FFFFFF',
     blue: '#A9B6CC',
-
   },
 };
 

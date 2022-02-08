@@ -12,7 +12,7 @@ import { removeSpace } from '../../lib/utf8';
 
 const StyledPostLayout = styled.main`
   label: post-layout;
-  
+
   margin: 30px auto;
   max-width: 850px;
 
@@ -21,13 +21,11 @@ const StyledPostLayout = styled.main`
   }
 `;
 
-const CodeBlock = ({ language, value }:any) => (
-  <SyntaxHighlighter language={language}>
-    {value}
-  </SyntaxHighlighter>
+const CodeBlock = ({ language, value }: any) => (
+  <SyntaxHighlighter language={language}>{value}</SyntaxHighlighter>
 );
 
-const Posts:FC = ({ postInfo }: any) => {
+const Posts: FC = ({ postInfo }: any) => {
   const router = useRouter();
 
   if (router.isFallback) {
@@ -39,17 +37,29 @@ const Posts:FC = ({ postInfo }: any) => {
       <Head>
         <title>FE 블로그 | @jangky000</title>
         <meta name="title" content="FE 블로그 | @jangky000" />
-        <meta name="keywords" content="FE, ReactJS, NextJS, javascript, typescript" />
-        <meta name="description" content="FE 개발자로 일하면서 겪은 경험담을 정리합니다." />
+        <meta
+          name="keywords"
+          content="FE, ReactJS, NextJS, javascript, typescript"
+        />
+        <meta
+          name="description"
+          content="FE 개발자로 일하면서 겪은 경험담을 정리합니다."
+        />
         <meta httpEquiv="Title" content="FE 블로그" />
-        <meta httpEquiv="Subject" content="FE 개발자로 일하면서 겪은 경험담을 정리합니다." />
+        <meta
+          httpEquiv="Subject"
+          content="FE 개발자로 일하면서 겪은 경험담을 정리합니다."
+        />
 
         {/* 기본 설정, 구글, 페이스북, 네이버, 카카오 ... */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://jangky000.github.io/blog" />
         <meta property="og:title" content="FE 블로그 | @jangky000" />
         {/* <meta property="og:image" content="" /> */}
-        <meta property="og:description" content="FE 개발자로 일하면서 겪은 경험담을 정리합니다." />
+        <meta
+          property="og:description"
+          content="FE 개발자로 일하면서 겪은 경험담을 정리합니다."
+        />
         <meta property="og:site_name" content="FE 블로그 | @jangky000" />
         <meta property="og:locale" content="ko_KR" />
         <meta property="og:image:width" content="316" />
@@ -58,9 +68,11 @@ const Posts:FC = ({ postInfo }: any) => {
         {/* 트위터 */}
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content="FE 블로그 | @jangky000" />
-        <meta name="twitter:description" content="FE 개발자로 일하면서 겪은 경험담을 정리합니다." />
+        <meta
+          name="twitter:description"
+          content="FE 개발자로 일하면서 겪은 경험담을 정리합니다."
+        />
         {/* <meta name="twitter:image" content="" /> */}
-
       </Head>
 
       <Header />
@@ -70,13 +82,7 @@ const Posts:FC = ({ postInfo }: any) => {
           <h2>{postInfo.title}</h2>
         </div>
         <small>
-          {postInfo.date}
-          {' '}
-          발행.
-          {' '}
-          @
-          {' '}
-          {postInfo.author}
+          {postInfo.date} 발행. @ {postInfo.author}
         </small>
         <hr />
         <ReactMarkdown
@@ -92,16 +98,18 @@ const Posts:FC = ({ postInfo }: any) => {
 };
 
 export async function getStaticPaths() {
-  const pathList = postlist.map((post) => ({ params: { title: removeSpace(post.title) } }));
+  const pathList = postlist.map(post => ({
+    params: { title: removeSpace(post.title) },
+  }));
   return {
     paths: pathList,
     fallback: false,
   };
 }
 
-export async function getStaticProps(context:any) {
+export async function getStaticProps(context: any) {
   const { title } = context.params;
-  const post = postlist.find((item) => removeSpace(item.title) === title);
+  const post = postlist.find(item => removeSpace(item.title) === title);
   return {
     props: { postInfo: post },
   };

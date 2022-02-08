@@ -17,20 +17,20 @@ const colors = {
 };
 
 interface LabelProps {
-  label: 'new' | 'reference' | 'summary'
+  label: 'new' | 'reference' | 'summary';
   children: ReactNode;
 }
-export const Label = ({ label, children }:LabelProps) => (
+export const Label = ({ label, children }: LabelProps) => (
   <span>
     {children}
     <style jsx>{style}</style>
     <style jsx>
       {`
-      span {
-        background-color: ${colors[label].bgc};
-        color: ${colors[label].c};
-      }
-    `}
+        span {
+          background-color: ${colors[label].bgc};
+          color: ${colors[label].c};
+        }
+      `}
     </style>
   </span>
 );
