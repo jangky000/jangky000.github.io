@@ -49,6 +49,7 @@ const getPosts = () => {
         id: timestamp,
         title: metadata.title ? metadata.title : 'No title given',
         author: metadata.author ? metadata.author : 'No author given',
+        desc: metadata.desc ? metadata.desc : 'No desc given',
         date: metadata.date ? metadata.date : 'No date given',
         content: content || 'No content given',
       };

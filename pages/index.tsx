@@ -32,13 +32,21 @@ const StyledHomeLayout = styled.main`
     min-height: 100px;
     display: flex;
     flex-direction: column;
+    margin-bottom: 2rem;
 
     h2 {
       font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
     }
 
     small {
       align-self: flex-end;
+      margin-left: 0.5rem;
+    }
+
+    .desc {
+      color: #777;
     }
   }
 `;
@@ -65,7 +73,7 @@ function Home() {
 
         {/* 기본 설정, 구글, 페이스북, 네이버, 카카오 ... */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://jangky000.github.io/blog" />
+        <meta property="og:url" content="https://jangky000.github.io" />
         <meta property="og:title" content="FE 블로그 | @jangky000" />
         {/* <meta property="og:image" content="" /> */}
         <meta
@@ -109,9 +117,19 @@ function Home() {
                     >
                       <a>{post.title}</a>
                     </Link>
+                    <small>{post.date}</small>
                   </h2>
-                  <small>{post.date} 발행</small>
-                  <small>@{post.author}</small>
+                  <div className="desc">
+                    <Link
+                      href="/posts/[title]"
+                      as={`/posts/${removeSpace(post.title)}`}
+                    >
+                      <a>
+                        {post.desc.slice(0, 70)}
+                        {post.desc.length > 70 && '...'}
+                      </a>
+                    </Link>
+                  </div>
                 </div>
               ))}
           </div>
