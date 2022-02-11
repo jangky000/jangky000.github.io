@@ -17,6 +17,7 @@
     "deploy:window": "yarn run build && next export && fsutil file createnew out/.nojekyll 0 && git add -f out/ && git checkout -b temp-for-deploy-gh-pages && git commit -m \"Deploy Next.js to gh-pages\" && git subtree split --prefix out -b gh-pages && git push -f origin gh-pages:gh-pages && git branch -D gh-pages && git checkout main && git branch -D temp-for-deploy-gh-pages"
   },
   "dependencies": {
+    "@craco/craco": "^6.4.3",
     "@emotion/react": "^11.1.5",
     "@emotion/styled": "^11.3.0",
     "@material-ui/core": "^4.12.3",
@@ -44,6 +45,7 @@
     "@types/styled-jsx": "^2.2.9",
     "@typescript-eslint/eslint-plugin": "^4.28.3",
     "@typescript-eslint/parser": "^4.28.3",
+    "craco-alias": "^3.0.1",
     "eslint": "^7.30.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-next": "11.0.1",

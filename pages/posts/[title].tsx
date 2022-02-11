@@ -4,11 +4,11 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { FC } from 'react';
 import { useRouter } from 'next/router';
 import styled from '@emotion/styled';
-import postlist from '../../jsons/posts.json';
-import { Header } from '../../components/organisms/Header';
-import { Footer } from '../../components/organisms/Footer';
-import styles from '../../styles/Posts.module.scss';
-import { removeSpace } from '../../lib/utf8';
+import postlist from '@jsons/posts.json';
+import { Header } from '@components/organisms/Header';
+import { Footer } from '@components/organisms/Footer';
+import styles from '@styles/Posts.module.scss';
+import { removeSpace } from '@lib/utf8';
 
 const StyledPostLayout = styled.main`
   label: post-layout;

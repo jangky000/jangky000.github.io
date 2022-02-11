@@ -30,6 +30,7 @@
         "import/no-extraneous-dependencies": "off",
         "react/jsx-props-no-spreading":"off",
         "jsx-a11y/anchor-is-valid":"off",
-        "no-unused-vars": "off"
+        "no-unused-vars": "off",
+        "import/no-unresolved": "off"
     }
 }

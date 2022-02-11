@@ -1,10 +1,10 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import styled from '@emotion/styled';
-import { Header } from '../components/organisms/Header';
-import { Footer } from '../components/organisms/Footer';
-import styles from '../styles/Index.module.scss';
-import postlist from '../jsons/posts.json';
+import { Footer } from '@components/organisms/Footer';
+import { Header } from '@components/organisms/Header';
+import styles from '@styles/Index.module.scss';
+import postlist from '@jsons/posts.json';
 import { removeSpace } from '../lib/utf8';
 
 const StyledHomeLayout = styled.main`
