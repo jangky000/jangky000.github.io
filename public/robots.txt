@@ -7,4 +7,4 @@ Allow : /
 User-agent: Yeti
 Allow: /
 
-Sitemap: https://coinlook.ga/sitemap.xml
+Sitemap: https://jangky000.github.io/sitemap.xml
