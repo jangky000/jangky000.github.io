@@ -2,7 +2,7 @@
 title: React에서 HOC로 공통 로직을 묶어서 관리해보자(+ Custom hook)
 author: jangky000
 date: 2021.11.04
-desc: React 공식 문서에서 class형으로 구현된 예제만 있는 HOC를 굳이 함수형으로 구현/적용해보고 느낀 Custom hook의 소중함에 대해 이야기해본다.
+desc: React 공식 문서에서 class형으로 구현된 예제만 있는 HOC를 굳이 함수형으로 구현/적용해보고 느낀점과 Custom hook의 소중함에 대해 이야기해본다.
 ---
 
 # 상황 #1
@@ -72,20 +72,6 @@ React 프로젝트에 4개의 새로운 페이지를 추가하는 태스크를 �
 
 ````typescript
 // HOC 함수: withCalendarDateRange
-import React, { FC, useMemo } from 'react';
-import moment from 'moment';
-import { useDataStore } from './context/Store';
-import { DateRange } from './Calendar';
-
-export interface CalendarDateRangeProps {
-  selectableDateRange: DateRange;
-  initSelectedDateRange: DateRange;
-}
-
-interface WrapperProps extends CalendarDateRangeProps {
-  [props: string]: unknown;
-}
-
 export const withCalendarDateRange = <OriginProps,>(WrappedComponent: FC<WrapperProps>): FC<OriginProps> => {
   const WrapperComponent = (props?: OriginProps) => {
     const { projectStore } = useDataStore();
@@ -118,12 +104,6 @@ export const withCalendarDateRange = <OriginProps,>(WrappedComponent: FC<Wrapper
 ````typescript
 // 공통 로직을 추가할 컴포넌트: WrappedVisitStatus
 // Props를 통해 selectableDateRange, initSelectedDateRange 데이터를 받는다.
-import React, { useState } from 'react';
-import { Calendar, DateRange } from './Calendar';
-import { withCalendarDateRange, CalendarDateRangeProps } from './HOC/withCalendarDateRange';
-
-type WrappedVisitStatusProps = CalendarDateRangeProps;
-
 const WrappedVisitStatus = ({ selectableDateRange, initSelectedDateRange }: WrappedVisitStatusProps) => {
   const [dateRange, setDateRange] = useState<DateRange>();
   const handleDateRange = (changedDateRange: DateRange) => setDateRange(changedDateRange);
@@ -148,18 +128,6 @@ export const VisitStatus = withCalendarDateRange(WrappedVisitStatus);
 
 ````typescript
 // 공통 로직이 추가된 컴포넌트 사용: Dashboard
-import React, { FC, useState } from 'react';
-import { BGTab, ITab } from './components/BGTab';
-import { TopNavBar } from './components/TopNavBar';
-import { Container } from './Dashboard.style';
-import { tabList } from './Dashboard.data';
-import { BorderSection } from './components/BorderSection';
-import { VisitStatus } from './components/VisitStatus';
-
-interface IUseTab {
-  selectedTab: ITab;
-  handleTab: (tab: ITab) => void;
-}
 export const useTab = (defaultTab: ITab): IUseTab => {
   const [selectedTab, setTab] = useState<ITab>(defaultTab);
   const handleTab = (tab: ITab) => {
@@ -184,7 +152,7 @@ export const Dashboard: FC = () => {
 
 ````
 
-# 좀 더 간단한 코드
+# 위의 구조를 간단하게 표현해보면 다음과 같다.
 
 ````javascript
 // HOC
@@ -233,25 +201,7 @@ Higher Order Component
 
 # 그런데,
 
-어찌저찌 HOC를 사용해보고 싶은 지적인 욕심은 풀었으나 HOC의 단점들이 눈에 들어오기 시작했다.
-
-- 타입스크립트를 사용한다면, 타입을 맞추기도 어려울 뿐더러, 읽기도 어렵다.
-
-````typescript
-export interface CalendarDateRangeProps {
-  selectableDateRange: DateRange;
-  initSelectedDateRange: DateRange;
-}
-
-interface WrapperProps extends CalendarDateRangeProps {
-  [props: string]: unknown;
-}
-
-export const withCalendarDateRange = <OriginProps,>(WrappedComponent: FC<WrapperProps>): FC<OriginProps> => {
-  const WrapperComponent = (props?: OriginProps) => {
-    ...
-````
-
+어찌저찌 HOC를 사용해보고 싶은 지적인 욕심은 풀었으나 HOC의 단점이 있다.
 - 여러 HOC를 하나의 컴포넌트에서 사용해야 할 경우가 생긴다면, `withA(withB(withC(MyComponent)))` 처럼 함수 호출 Depth가 깊어진다(Nesting).
 
 # 나는 평소 Hooks를 소중히 여기지 않았지
@@ -282,10 +232,6 @@ const useCalendarDateRange = ()=>{
 ````typescript
 // 공통 로직을 추가할 컴포넌트: VisitStatus
 // Props를 통해서가 아닌 useCalendarDateRange()를 호출해서 필요한 데이터를 받는다.
-import React, { useState } from 'react';
-import { Calendar, DateRange } from './Calendar';
-import { useCalendarDateRange } from './hooks/useCalendarDateRange';
-
 export const VisitStatus = () => {
   const [dateRange, setDateRange] = useState<DateRange>();
   const handleDateRange = (changedDateRange: DateRange) => setDateRange(changedDateRange);
