@@ -1,8 +1,8 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { StyledHomeLayout } from '@styles/home/style';
-import { Footer } from '@components/organisms/Footer';
-import { Header } from '@components/organisms/Header';
+import { Footer } from '@components/Footer';
+import { Header } from '@components/Header';
 import styles from '@styles/Index.module.scss';
 import postlist from '@jsons/posts.json';
 import { ReactElement } from 'react';
