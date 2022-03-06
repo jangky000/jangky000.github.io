@@ -1,46 +1,31 @@
+import { GetStaticPropsContext } from 'next';
 import Head from 'next/head';
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { FC } from 'react';
+import { ReactElement } from 'react';
 import { useRouter } from 'next/router';
-import styled from '@emotion/styled';
+import { StyledPostLayout } from '@styles/posts/style';
 import postlist from '@jsons/posts.json';
 import { Header } from '@components/organisms/Header';
 import { Footer } from '@components/organisms/Footer';
 import styles from '@styles/Posts.module.scss';
 import { removeSpace } from '@lib/utf8';
+import { Post } from 'types/post';
 
-const StyledPostLayout = styled.main`
-  label: post-layout;
+interface PostsProps {
+  postInfo: Post;
+}
 
-  margin: 30px auto;
-  max-width: 850px;
-  width: 80%;
-
-  img {
-    width: 100%;
-  }
-
-  .desc {
-    border-radius: 4px;
-    background-color: ${({ theme }) => theme.colors.green};
-    padding: 20px;
-    margin: 20px auto;
-    color: ${({ theme }) => theme.colors.white};
-    font-size: 1.1rem;
-  }
-`;
-
-const CodeBlock = ({ language, value }: any) => (
-  <SyntaxHighlighter language={language}>{value}</SyntaxHighlighter>
-);
-
-const Posts: FC = ({ postInfo }: any) => {
+function Posts({ postInfo }: PostsProps): ReactElement {
   const router = useRouter();
 
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
+
+  const CodeBlock = ({ language, value }: any) => (
+    <SyntaxHighlighter language={language}>{value}</SyntaxHighlighter>
+  );
 
   return (
     <div className={styles.container}>
@@ -94,7 +79,7 @@ const Posts: FC = ({ postInfo }: any) => {
       <Footer />
     </div>
   );
-};
+}
 
 export async function getStaticPaths() {
   const pathList = postlist.map(post => ({
@@ -106,8 +91,10 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps(context: any) {
-  const { title } = context.params;
+export async function getStaticProps(
+  context: GetStaticPropsContext<{ title: string }>,
+) {
+  const title = context.params?.title || '';
   const post = postlist.find(item => removeSpace(item.title) === title);
   return {
     props: { postInfo: post },
