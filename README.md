@@ -1,13 +1,17 @@
-# FE 블로그 @jangky000
+# FE 블로그
+
+> Welcome!
+FE 블로그 | @jangky000
+FE 개발자로 일하면서 겪은 경험담을 정리합니다.
 
 ## 사용법
 ```bash
-# 실행
+# 개발 환경 실행
 yarn run dev
 
-# 배포
+# 포스트 md 파일을 json 파일로 파싱 
 yarn run posts # post json
 
-# 작업 내용 커밋하지 않고 deploy하면 작업 내용 다 날아감
+# GitHub Pages 배포 
 yarn run deploy # window에서는 yarn run deploy:window
 ```
