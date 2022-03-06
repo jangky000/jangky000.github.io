@@ -4,6 +4,7 @@ import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { ReactElement } from 'react';
 import { useRouter } from 'next/router';
+import { animated, useSpring } from 'react-spring';
 import { StyledPostLayout } from '@styles/posts/style';
 import postlist from '@jsons/posts.json';
 import { Header } from '@components/Header';
@@ -18,6 +19,8 @@ interface PostsProps {
 
 function Posts({ postInfo }: PostsProps): ReactElement {
   const router = useRouter();
+
+  const fadeInStyle = useSpring({ opacity: 1, from: { opacity: 0 } });
 
   if (router.isFallback) {
     return <div>Loading...</div>;
@@ -60,21 +63,23 @@ function Posts({ postInfo }: PostsProps): ReactElement {
 
       <Header />
 
-      <StyledPostLayout>
-        <div>
-          <h2>{postInfo.title}</h2>
-        </div>
-        <small>
-          {postInfo.date} 작성 / @{postInfo.author}
-        </small>
-        <hr />
-        <div className="desc">{postInfo.desc}</div>
-        <ReactMarkdown
-          escapeHtml={false}
-          source={postInfo.content}
-          renderers={{ code: CodeBlock }}
-        />
-      </StyledPostLayout>
+      <animated.div style={fadeInStyle}>
+        <StyledPostLayout>
+          <div>
+            <h2>{postInfo.title}</h2>
+          </div>
+          <small>
+            {postInfo.date} 작성 / @{postInfo.author}
+          </small>
+          <hr />
+          <div className="desc">{postInfo.desc}</div>
+          <ReactMarkdown
+            escapeHtml={false}
+            source={postInfo.content}
+            renderers={{ code: CodeBlock }}
+          />
+        </StyledPostLayout>
+      </animated.div>
 
       <Footer />
     </div>
