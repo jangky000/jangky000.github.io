@@ -1,15 +1,21 @@
-import styled from '@emotion/styled';
-import router from 'next/router';
+import Neon from '@components/Neon';
+import { Styled404Layout } from '@styles/404/style';
+import { ReactElement } from 'react';
+import { animated, useSpring } from 'react-spring';
 
-const StyledLayout = styled.div`
-  label: 404-layout;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
+export default function Custom404(): ReactElement {
+  const fadeInStyle = useSpring({ opacity: 1, from: { opacity: 0 } });
 
-export default function Custom404() {
-  return <StyledLayout>404 - Page Not Found</StyledLayout>;
+  return (
+    <animated.div style={fadeInStyle}>
+      <Styled404Layout>
+        <h1>
+          <Neon>404</Neon>
+        </h1>
+        <h2>
+          <Neon>Page Not Found</Neon>
+        </h2>
+      </Styled404Layout>
+    </animated.div>
+  );
 }

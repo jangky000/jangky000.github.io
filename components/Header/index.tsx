@@ -1,16 +1,12 @@
 import Link from 'next/link';
-// import Image from 'next/image';
-// import LogoPic from '../../../public/logo.svg';
 import { style } from './style';
 
 export const Header = () => (
   <header>
-    {/* header */}
     <div className="wrapper">
       <div className="title">
         <Link href="/">
           <a>
-            {/* <Image src={LogoPic} alt="logo" width={32} height={32} /> */}
             <h1>FE 블로그</h1>
           </a>
         </Link>

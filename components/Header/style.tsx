@@ -26,6 +26,7 @@ export const style = css`
   .desc {
     color: #333;
     font-size: 0.9rem;
+    margin-top: 0.5rem;
   }
 
   a {

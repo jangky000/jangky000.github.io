@@ -5,6 +5,12 @@ export interface Palette {
     yellow: string;
     white: string;
     blue: string;
+    neonRed: string;
+    neonBlue: string;
+    neonYellow: string;
+    neonGreen: string;
+    neonOrange: string;
+    neonViolet: string;
   };
 }
 
@@ -16,6 +22,12 @@ export const theme: Palette = {
     yellow: '#FFEC67',
     white: '#FFFFFF',
     blue: '#A9B6CC',
+    neonRed: '#FF1177',
+    neonBlue: '#228DFF',
+    neonYellow: '#FFDD1B',
+    neonGreen: '#B6FF00',
+    neonOrange: '#FF9900',
+    neonViolet: '#ff00de',
   },
 };
 
