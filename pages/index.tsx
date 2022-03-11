@@ -1,16 +1,16 @@
 import Head from 'next/head';
-import Link from 'next/link';
 import { StyledHomeLayout } from '@styles/home/style';
 import { Footer } from '@components/Footer';
 import { Header } from '@components/Header';
 import styles from '@styles/Index.module.scss';
-import postlist from '@jsons/posts.json';
 import { ReactElement } from 'react';
 import { animated, useSpring } from 'react-spring';
-import { removeSpace } from '../lib/utf8';
+import PostList from '@components/PostList';
+import usePostList from 'hooks/usePostList';
 
-function Home(): ReactElement {
+const Home = (): ReactElement => {
   const fadeInStyle = useSpring({ opacity: 1, from: { opacity: 0 } });
+  const postList = usePostList();
 
   return (
     <div className={styles.container}>
@@ -68,31 +68,7 @@ function Home(): ReactElement {
           <div>
             <div className="postlist">
               <div className="tab">모든 게시글</div>
-              {postlist.length &&
-                postlist.map(post => (
-                  <div key={post.id} className="post-card">
-                    <h2>
-                      <Link
-                        href="/posts/[title]"
-                        as={`/posts/${removeSpace(post.title)}`}
-                      >
-                        <a>{post.title}</a>
-                      </Link>
-                      <small>{post.date}</small>
-                    </h2>
-                    <div className="desc">
-                      <Link
-                        href="/posts/[title]"
-                        as={`/posts/${removeSpace(post.title)}`}
-                      >
-                        <a>
-                          {post.desc.slice(0, 70)}
-                          {post.desc.length > 70 && '...'}
-                        </a>
-                      </Link>
-                    </div>
-                  </div>
-                ))}
+              <PostList postList={postList} />
             </div>
           </div>
         </StyledHomeLayout>
@@ -101,6 +77,6 @@ function Home(): ReactElement {
       <Footer />
     </div>
   );
-}
+};
 
 export default Home;

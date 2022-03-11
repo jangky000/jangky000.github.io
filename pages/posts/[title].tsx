@@ -6,20 +6,20 @@ import { ReactElement } from 'react';
 import { useRouter } from 'next/router';
 import { animated, useSpring } from 'react-spring';
 import { StyledPostLayout } from '@styles/posts/style';
-import postlist from '@jsons/posts.json';
 import { Header } from '@components/Header';
 import { Footer } from '@components/Footer';
 import styles from '@styles/Posts.module.scss';
-import { removeSpace } from '@lib/utf8';
+import { removeSpace } from 'libs/utf8';
 import { Post } from 'types/post';
+import usePostList from 'hooks/usePostList';
+import PostList from '@components/PostList';
 
 interface PostsProps {
   postInfo: Post;
 }
 
-function Posts({ postInfo }: PostsProps): ReactElement {
+const Posts = ({ postInfo }: PostsProps): ReactElement => {
   const router = useRouter();
-
   const fadeInStyle = useSpring({ opacity: 1, from: { opacity: 0 } });
 
   if (router.isFallback) {
@@ -72,7 +72,7 @@ function Posts({ postInfo }: PostsProps): ReactElement {
             {postInfo.date} 작성 / @{postInfo.author}
           </small>
           <hr />
-          <div className="desc">{postInfo.desc}</div>
+          <div className="post-desc">{postInfo.desc}</div>
           <ReactMarkdown
             escapeHtml={false}
             source={postInfo.content}
@@ -84,10 +84,11 @@ function Posts({ postInfo }: PostsProps): ReactElement {
       <Footer />
     </div>
   );
-}
+};
 
 export async function getStaticPaths() {
-  const pathList = postlist.map(post => ({
+  const postList = usePostList();
+  const pathList = postList.map(post => ({
     params: { title: removeSpace(post.title) },
   }));
   return {
@@ -99,8 +100,9 @@ export async function getStaticPaths() {
 export async function getStaticProps(
   context: GetStaticPropsContext<{ title: string }>,
 ) {
+  const postList = usePostList();
   const title = context.params?.title || '';
-  const post = postlist.find(item => removeSpace(item.title) === title);
+  const post = postList.find(item => removeSpace(item.title) === title);
   return {
     props: { postInfo: post },
   };

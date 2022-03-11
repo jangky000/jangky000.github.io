@@ -11,7 +11,7 @@ export const StyledPostLayout = styled.main`
     max-width: 100%;
   }
 
-  .desc {
+  .post-desc {
     border-radius: 4px;
     background-color: ${({ theme }) => theme.colors.green};
     padding: 20px;
