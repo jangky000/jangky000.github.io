@@ -77,7 +77,7 @@ z-index 속성의 가장 큰 특징은 부모 element가 z-index보다 다른 �
 
 ## GeneralModalComposition 사용법
 
-버튼의 클릭 이벤트 핸들러와 모달 내부의 컴포넌트가 분리가 되었다. 그리고 전역 상태 관리를 고려하지 않고도 모달창을 최상위에 그릴 수 있게 되었다.
+버튼의 클릭 이벤트 핸들러와 모달 내부의 컴포넌트가 분리가 되었다. 그리고 전역 상태로 관리하지 않고도 모달 컴포넌트를 최상단에 그릴 수 있게 되었다.
 
 ```tsx
 const [isModalOpen, setModalOpen] = useState(false);
