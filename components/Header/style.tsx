@@ -18,7 +18,7 @@ export const style = css`
     margin-bottom: 12px;
   }
 
-  h1 {
+  b {
     font-size: 1.4rem;
     font-weight: bold;
   }

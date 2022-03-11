@@ -8,7 +8,7 @@ export const StyledPostLayout = styled.main`
   width: 80%;
 
   img {
-    width: 100%;
+    max-width: 100%;
   }
 
   .desc {

@@ -7,7 +7,7 @@ export const Header = () => (
       <div className="title">
         <Link href="/">
           <a>
-            <h1>FE 블로그</h1>
+            <b>FE 블로그</b>
           </a>
         </Link>
         <div className="desc">
