@@ -2,7 +2,7 @@
 title: 복잡한 컴포넌트에서 UI와 기능을 분리해보자
 author: jangky000
 date: 2022.02.19
-desc: 협업을 하다보면 남이 짠 코드를 읽고 새로운 기획에 맞게 수정해서 사용하는 경우가 많다. 재사용성을 고려하고 각각의 주요 역할이 잘 분리되어 있는 코드라면 쉽게 수정이 가능할 것이라고 생각한다. 이번 작업에서는 재사용성을 고려하여 UI와 기능을 분리해본 경험을 공유하고자 한다.
+desc: 협업을 하다보면 남이 짠 코드를 읽고 새로운 기획에 맞게 수정해서 사용하는 경우가 많다. 재사용성을 고려하고 각각의 주요 역할이 잘 분리되어 있는 코드라면 쉽게 수정이 가능하다. 이번 작업에서는 재사용성을 고려하여 UI와 기능을 분리해본 경험을 공유하고자 한다.
 ---
 
 # ImageUploader라는 컴포넌트가 있었다.
@@ -17,7 +17,7 @@ desc: 협업을 하다보면 남이 짠 코드를 읽고 새로운 기획에 맞
     - 스타일 기능 `Button`
     - 이미지 업로드 기능 `ImageUploaderComposition`
 
-# 변경 전
+## 변경 전
 
 ![1](https://user-images.githubusercontent.com/46799722/154789453-c6fea7ef-e4d8-4b2e-8411-04fc7e7eae3e.png)
 ![2](https://user-images.githubusercontent.com/46799722/154789454-24b0539d-feb8-421a-8982-7b4f137448d0.png)
@@ -54,9 +54,9 @@ desc: 협업을 하다보면 남이 짠 코드를 읽고 새로운 기획에 맞
 ...
 ```
 
+## 하나의 컴포넌트에서 하는 일이 너무 많다.
 ```tsx
-// ImageUploader.tsx 
-// 하나의 컴포넌트에서 하는 일이 너무 많다.
+// ImageUploader.tsx
 
 export interface ImageUploaderProp {
   visualType?: ImageUploaderVisualType;
@@ -208,7 +208,7 @@ ImageUploader.defaultProps = {
 };
 ```
 
-# 변경 후
+## 변경 후
 
 - 컴포넌트를 다음과 같이 분리
 - `이미지 리스트를 관리하는 컴포넌트(SmsInputImageList)`
@@ -269,9 +269,10 @@ export const InputImageEmptyCard: FC<InputImageEmptyCardProps> = ({
 };
 ```
 
+## 이미지 업로드 기능만 담당
+
 ```tsx
 // ImageUploaderComposition.tsx
-// 이미지 업로드 기능만 담당
 export interface ImageUploaderCompositionProps {
   uploadImageAPIEndPoint: string;
   handleUpload: (file: FileInter | Error) => void;
