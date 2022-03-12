@@ -73,11 +73,13 @@ const Posts = ({ postInfo }: PostsProps): ReactElement => {
           </small>
           <hr />
           <div className="post-desc">{postInfo.desc}</div>
-          <ReactMarkdown
-            escapeHtml={false}
-            source={postInfo.content}
-            renderers={{ code: CodeBlock }}
-          />
+          <div className="post-contents">
+            <ReactMarkdown
+              escapeHtml={false}
+              source={postInfo.content}
+              renderers={{ code: CodeBlock }}
+            />
+          </div>
         </StyledPostLayout>
       </animated.div>
 

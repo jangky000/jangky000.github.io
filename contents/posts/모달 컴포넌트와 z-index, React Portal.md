@@ -97,51 +97,10 @@ return (
 	)
 ```
 
-# PortalToModalRootComposition.tsx
-
-```tsx
-import React, { useEffect, useRef } from 'react';
-import ReactDom from 'react-dom';
-
-const modalRoot = document.getElementById('modal-root');
-
-interface ModalCompositionPortalProps {
-  children: React.ReactNode;
-}
-/**
- * @description
- * Portal Composition
- * index.html의 <div id="modal-root"></div> 내부로 children을 이동
- * @example
- * <PortalToModalRootComposition>
- *  { 임의의 Modal 컴포넌트 }
- * </PortalToModalRootComposition>
- */
-function PortalToModalRootComposition({ children }: ModalCompositionPortalProps) {
-  const container = document.createElement('div');
-  // container를 ref로 관리하여, fadeout render 시점 문제 해결
-  const containerRef = useRef<HTMLDivElement | null>(container);
-
-  useEffect(() => {
-    if (containerRef.current !== null) modalRoot?.appendChild(containerRef.current);
-    return () => {
-      if (containerRef.current !== null) modalRoot?.removeChild(containerRef.current);
-    };
-  }, [containerRef]);
-
-  if (containerRef.current) {
-    return ReactDom.createPortal(children, containerRef.current);
-  }
-  return null;
-}
-
-export default React.memo(PortalToModalRootComposition);
-```
-
 # GeneralModalComposition.tsx
 
-- 배경에 <Backdrop /> 추가
-- fadeIn, fadeOut animation 적용
+배경에 Backdrop 추가.
+fadeIn, fadeOut animation 적용.
 
 ```tsx
 interface GeneralModalCompositionProps {
@@ -246,10 +205,55 @@ export const StyledGeneralModal = styled.div<{ isOpen: boolean }>`
 `;
 ```
 
+# PortalToModalRootComposition.tsx
+
+React Portal을 사용한 컴포지션 패턴의 컴포넌트.
+fade out 애니메이션 발생 시 깜빡 거리는 문제를 해결하기 위해 container ref를 사용.
+
+```tsx
+import React, { useEffect, useRef } from 'react';
+import ReactDom from 'react-dom';
+
+const modalRoot = document.getElementById('modal-root');
+
+interface ModalCompositionPortalProps {
+  children: React.ReactNode;
+}
+/**
+ * @description
+ * Portal Composition
+ * index.html의 <div id="modal-root"></div> 내부로 children을 이동
+ * @example
+ * <PortalToModalRootComposition>
+ *  { 임의의 Modal 컴포넌트 }
+ * </PortalToModalRootComposition>
+ */
+function PortalToModalRootComposition({ children }: ModalCompositionPortalProps) {
+  const container = document.createElement('div');
+  // container를 ref로 관리하여, fadeout render 시점 문제 해결
+  const containerRef = useRef<HTMLDivElement | null>(container);
+
+  useEffect(() => {
+    if (containerRef.current !== null) modalRoot?.appendChild(containerRef.current);
+    return () => {
+      if (containerRef.current !== null) modalRoot?.removeChild(containerRef.current);
+    };
+  }, [containerRef]);
+
+  if (containerRef.current) {
+    return ReactDom.createPortal(children, containerRef.current);
+  }
+  return null;
+}
+
+export default React.memo(PortalToModalRootComposition);
+```
+
 # index.html
 
-```html
+id가 modal-root인 div 태그 추가
 
+```html
 <!DOCTYPE html>
 <html lang="en">
 	<head>

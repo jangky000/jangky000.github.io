@@ -19,4 +19,14 @@ export const StyledPostLayout = styled.main`
     color: ${({ theme }) => theme.colors.white};
     font-size: 1.1rem;
   }
+
+  .post-contents {
+    a {
+      color: ${({ theme }) => theme.colors.dark};
+      &:hover {
+        color: #000;
+        cursor: pointer;
+      }
+    }
+  }
 `;
