@@ -11,7 +11,7 @@ desc: 현재 프로젝트에서 사용되고 있던 모달 컴포넌트를 알�
 
 ## z-index의 특징
 
-z-index 속성의 가장 큰 특징은 부모 element가 z-index보다 다른 형제 element들의 z-index보다 낮을 때, 아무리 자식 element의 z-index 값을 크게 해도 최상단에 보이지 않는다는 점이다. 이는 쌓임맥락(Stacking Context)을 참고하면 이해가 될 것이다.(참고: [쌓임맥락](https://developer.mozilla.org/ko/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context))
+z-index 속성의 가장 큰 특징은 부모 element의 z-index가 다른 형제 element들의 z-index보다 낮을 때, 아무리 자식 element의 z-index 값을 크게 해도 최상단에 보이지 않는다는 점이다. 이는 쌓임맥락(Stacking Context)을 참고하면 이해가 될 것이다.(참고: [쌓임맥락](https://developer.mozilla.org/ko/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context))
 
 ## 기존 모달 컴포넌트
 
@@ -19,7 +19,7 @@ z-index 속성의 가장 큰 특징은 부모 element가 z-index보다 다른 �
 
 ## 기존 모달 컴포넌트 구현 방식
 
-부모 element의 z-index에 영향을 받지 않기 위해, Route 아래에서 GlobalModal 컴포넌트를 아래와 같이 선언했다. 그리고 전역 상태의 변화를 통해 모달창이 켜지고 꺼지게 설계되었다.
+부모 element의 z-index에 영향을 받지 않기 위해, Route 아래에서 GlobalModal 컴포넌트를 아래와 같이 선언했다. 그리고 전역 상태로 모달창을 켜고 끄게 설계되었다.
 
 ```tsx
 <Switch>
@@ -68,9 +68,9 @@ z-index 속성의 가장 큰 특징은 부모 element가 z-index보다 다른 �
 
 ## 개선 결과: GeneralModalComposition
 
-일반적인 컴포넌트가 `div#root` 내부에 추가되고 Portal을 사용한 컴포넌트는 형제 element인 `div#modal-root` 내부에 추가된다. 그렇게 되면 나중에 나온 `div#modal-root`가 형제 element보다 상위에 표시되게 된다.(position이 없는 요소 간의 비교) 
+일반적인 컴포넌트가 `div#root` 내부에 추가되고, Portal을 사용한 컴포넌트는 형제 element인 `div#modal-root` 내부에 추가된다. 그렇게 되면 `div#modal-root` 내부에 있는 modal의 z-index는 `div#root` 내부에 있는 부모 컴포넌트 z-index에 영향을 받지 않는다. 그러므로 modal의 z-index만 값만 고려해서 충분히 할당하면 된다.(여기서는 99)
 
-그러므로 `div#modal-root` 내부에 있는 모든 컴포넌트는 부모인 `div#modal-root`의 쌓임 맥락(Stacking Context)에 동화되기 때문에 최상단에 보일 수 있게 된다.
+여기서 주의할 점은 `div#modal-root` 내부에 있는 modal에 z-index 값을 주지 않으면, `div#root` 내부에 있는 z-index가 더 높은 element가 더 상위에 보이게 된다. `div#modal-root` 내부에 있는 modal이 부모 element의 쌓임맥락에 동화되지 않을 뿐이지 z-index 비교는 그대로 하기 때문이다.
 
 <img width="35%" alt="3" src="https://user-images.githubusercontent.com/46799722/157811185-5f417b2d-73c0-4c32-9b54-111ff7f3d93f.png">
 <img width="60%" alt="4" src="https://user-images.githubusercontent.com/46799722/157811188-4993ac48-9b6a-46d4-95f8-0550835928df.png">
@@ -190,6 +190,7 @@ export const StyledGeneralModal = styled.div<{ isOpen: boolean }>`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  z-index: 99;
 
   > .general-modal-content {
     z-index: 1;
