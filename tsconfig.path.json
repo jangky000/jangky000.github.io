@@ -7,7 +7,7 @@
             "@styles/*": ["styles/*"],
             "@jsons/*": ["jsons/*"],
             "@theme/*": ["theme/*"],
-            "@lib/*": ["lib/*"],
+            "@libs/*": ["libs/*"],
          },
      }
    }

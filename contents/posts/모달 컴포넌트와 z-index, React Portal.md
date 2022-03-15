@@ -3,6 +3,7 @@ title: 모달 컴포넌트와 z-index, React Portal
 author: jangky000
 date: 2022.02.22
 desc: 현재 프로젝트에서 사용되고 있던 모달 컴포넌트를 알아보고, React Portal을 사용하여 개선해보자
+category: 업무 회고
 ---
 
 # 모달 컴포넌트

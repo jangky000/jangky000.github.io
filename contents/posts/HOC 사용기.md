@@ -3,6 +3,7 @@ title: React에서 HOC로 공통 로직을 묶어서 관리해보자(+ Custom ho
 author: jangky000
 date: 2021.11.04
 desc: React 공식 문서에서 class형으로 구현된 예제만 있는 HOC를 굳이 함수형으로 구현/적용해보고 느낀점과 Custom hook의 소중함에 대해 이야기해본다.
+category: 업무 회고
 ---
 
 # 상황 #1

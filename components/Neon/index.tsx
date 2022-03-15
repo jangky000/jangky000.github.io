@@ -1,4 +1,4 @@
-import { useCallback, useMemo, ReactNode, memo } from 'react';
+import { useMemo, ReactNode, memo } from 'react';
 import { useTheme } from '@emotion/react';
 import { StyledNeon } from './style';
 

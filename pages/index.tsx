@@ -1,16 +1,29 @@
 import Head from 'next/head';
+import { useState, ReactElement } from 'react';
 import { StyledHomeLayout } from '@styles/home/style';
 import { Footer } from '@components/Footer';
 import { Header } from '@components/Header';
 import styles from '@styles/Index.module.scss';
-import { ReactElement } from 'react';
 import { animated, useSpring } from 'react-spring';
 import PostList from '@components/PostList';
 import usePostList from 'hooks/usePostList';
+import { TabContext, TabList, TabPanel } from '@material-ui/lab';
+import { Tab } from '@material-ui/core';
+import { useTheme } from '@emotion/react';
 
 const Home = (): ReactElement => {
+  const theme = useTheme();
   const fadeInStyle = useSpring({ opacity: 1, from: { opacity: 0 } });
   const postList = usePostList();
+  const reviewList = postList.filter(
+    post => post.category.indexOf('업무 회고') > -1,
+  );
+  const etcList = postList.filter(post => post.category.indexOf('기타') > -1);
+
+  const [value, setValue] = useState('1');
+  const handleChange = (event: any, newValue: any) => {
+    setValue(newValue);
+  };
 
   return (
     <div className={styles.container}>
@@ -67,8 +80,29 @@ const Home = (): ReactElement => {
 
           <div>
             <div className="postlist">
-              <div className="tab">모든 게시글</div>
-              <PostList postList={postList} />
+              <TabContext value={value}>
+                <TabList
+                  onChange={handleChange}
+                  aria-label="post tab list"
+                  TabIndicatorProps={{
+                    style: { background: theme.colors.dark },
+                  }}
+                >
+                  <Tab label={`모든 게시글(${postList.length})`} value="1" />
+                  <Tab label={`업무 회고(${reviewList.length})`} value="2" />
+                  <Tab label={`기타(${etcList.length})`} value="3" />
+                </TabList>
+
+                <TabPanel value="1">
+                  <PostList postList={postList} />
+                </TabPanel>
+                <TabPanel value="2">
+                  <PostList postList={reviewList} />
+                </TabPanel>
+                <TabPanel value="3">
+                  <PostList postList={etcList} />
+                </TabPanel>
+              </TabContext>
             </div>
           </div>
         </StyledHomeLayout>

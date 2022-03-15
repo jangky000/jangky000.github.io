@@ -6,7 +6,7 @@ import '@styles/globals.css';
 import type { AppProps } from 'next/app';
 import { RecoilRoot } from 'recoil';
 import { ThemeProvider } from '@emotion/react';
-import { theme } from '@theme/Theme';
+import { theme } from '@theme/theme';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(() => new QueryClient());

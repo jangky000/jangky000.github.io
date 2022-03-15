@@ -3,6 +3,7 @@ title: NextJS + Typescript + ESLint 프로젝트에서 절대경로 alias 설정
 author: jangky000
 date: 2022.02.11
 desc: 프로젝트의 사이즈가 커질수록 상대경로를 통해 import를 하게 되면 ../ 지옥에 빠지기 쉽다. NextJS + Typescript + ESLint를 사용하고 있는 현재 블로그에서 CRACO 라이브러리를 사용해 절대경로 alias를 설정하고 import path를 깔끔하게 관리하는 방법을 공유한다.
+category: 기타
 ---
 
 # NextJS + Typescript + ESLint 프로젝트에서 절대경로 Alias 설정하기

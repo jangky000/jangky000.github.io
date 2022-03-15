@@ -5,4 +5,5 @@ export interface Post {
   desc: string;
   date: string;
   content: string;
+  category: string;
 }

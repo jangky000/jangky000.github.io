@@ -12,7 +12,6 @@ import styles from '@styles/Posts.module.scss';
 import { removeSpace } from 'libs/utf8';
 import { Post } from 'types/post';
 import usePostList from 'hooks/usePostList';
-import PostList from '@components/PostList';
 
 interface PostsProps {
   postInfo: Post;

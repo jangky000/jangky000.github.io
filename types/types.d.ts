@@ -1,4 +1,4 @@
-import { Palette } from '@theme/Theme';
+import { Palette } from '@theme/theme';
 
 declare module '@emotion/react' {
   export interface Theme extends Palette {}

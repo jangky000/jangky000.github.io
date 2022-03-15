@@ -47,11 +47,12 @@ const getPosts = () => {
       const timestamp = date.getTime() / 1000;
       post = {
         id: timestamp,
-        title: metadata.title ? metadata.title : 'No title given',
-        author: metadata.author ? metadata.author : 'No author given',
-        desc: metadata.desc ? metadata.desc : 'No desc given',
-        date: metadata.date ? metadata.date : 'No date given',
-        content: content || 'No content given',
+        title: metadata.title ?? 'No title given',
+        author: metadata.author ?? 'No author given',
+        category: metadata.category ?? 'No category given',
+        desc: metadata.desc ?? 'No desc given',
+        date: metadata.date ?? 'No date given',
+        content: content ?? 'No content given',
       };
       postlist.push(post);
     });
