@@ -8,7 +8,7 @@ const getDate = new Date().toISOString();
 
 const YOUR_AWESOME_DOMAIN = 'https://jangky000.github.io';
 
-const formatted = (sitemap) => prettier.format(sitemap, { parser: 'html' });
+const formatted = sitemap => prettier.format(sitemap, { parser: 'html' });
 
 (async () => {
   const pages = await globby([
@@ -20,30 +20,39 @@ const formatted = (sitemap) => prettier.format(sitemap, { parser: 'html' });
     path.join('!', __dirname, '../pages/**/[title].tsx'),
   ]);
 
+  const mainSitemap = `
+    <url>
+      <loc>${YOUR_AWESOME_DOMAIN}</loc>
+      <lastmod>${getDate}</lastmod>
+    </url>
+  `;
+
   const pagesSitemap = `
     ${pages
-    .map((page) => {
-      const subPath = page
-        .replace(/.+\/pages\//, '')
-        .replace('.tsx', '')
-        .replace(/\/index/g, '');
-      const routePath = subPath === 'index' ? '' : subPath;
-      return `
+      .map(page => {
+        const subPath = page
+          .replace(/.+\/pages\//, '')
+          .replace('.tsx', '')
+          .replace(/\/index/g, '');
+        const routePath = subPath === 'index' ? '' : subPath;
+        return `
           <url>
             <loc>${YOUR_AWESOME_DOMAIN}/${routePath}</loc>
             <lastmod>${getDate}</lastmod>
           </url>
         `;
-    })
-    .join('')}
+      })
+      .join('')}
   `;
 
-  const postSitemap = postlist.map((post) => `
+  const postSitemap = postlist.map(
+    post => `
     <url>
       <loc>${YOUR_AWESOME_DOMAIN}/posts/${post.title.replace(/\s+/g, '')}</loc>
       <lastmod>${getDate}</lastmod>
     </url>
-  `);
+  `,
+  );
 
   const generatedSitemap = `
     <?xml version="1.0" encoding="UTF-8"?>
@@ -52,6 +61,7 @@ const formatted = (sitemap) => prettier.format(sitemap, { parser: 'html' });
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
     >
+      ${mainSitemap}
       ${pagesSitemap}
       ${postSitemap}
     </urlset>
@@ -59,5 +69,9 @@ const formatted = (sitemap) => prettier.format(sitemap, { parser: 'html' });
 
   const formattedSitemap = [formatted(generatedSitemap)];
 
-  fs.writeFileSync(path.join(__dirname, '../public/sitemap.xml'), formattedSitemap.toString(), 'utf8');
+  fs.writeFileSync(
+    path.join(__dirname, '../public/sitemap.xml'),
+    formattedSitemap.toString(),
+    'utf8',
+  );
 })();
