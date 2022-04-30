@@ -12,6 +12,7 @@ import styles from '@styles/Posts.module.scss';
 import { removeSpace } from 'libs/utf8';
 import { Post } from 'types/post';
 import usePostList from 'hooks/usePostList';
+import { Utterances } from 'utterances-react-component';
 
 interface PostsProps {
   postInfo: Post;
@@ -82,6 +83,11 @@ const Posts = ({ postInfo }: PostsProps): ReactElement => {
         </StyledPostLayout>
       </animated.div>
 
+      <Utterances
+        repo="jangky000/jangky000.github.io"
+        theme="github-light"
+        issueTerm="pathname"
+      />
       <Footer />
     </div>
   );

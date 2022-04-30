@@ -34,7 +34,8 @@
     "react-spring": "^9.4.3",
     "react-syntax-highlighter": "15.4.4",
     "recoil": "^0.4.1",
-    "sass": "^1.35.2"
+    "sass": "^1.35.2",
+    "utterances-react-component": "^1.0.0"
   },
   "devDependencies": {
     "@emotion/babel-plugin": "^11.3.0",
