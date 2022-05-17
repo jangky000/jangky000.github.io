@@ -1,4 +1,6 @@
+import Animation from '@components/Lottie';
 import Link from 'next/link';
+import animationData from '@public/palm-lottie.json';
 import { style } from './style';
 
 export const Header = () => (
@@ -7,6 +9,7 @@ export const Header = () => (
       <div className="title">
         <Link href="/">
           <a>
+            <Animation animationData={animationData} />
             <b>FE 블로그</b>
           </a>
         </Link>

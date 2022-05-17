@@ -8,6 +8,7 @@
             "@jsons/*": ["jsons/*"],
             "@theme/*": ["theme/*"],
             "@libs/*": ["libs/*"],
+            "@public/*": ["public/*"],
          },
      }
    }
