@@ -16,13 +16,17 @@ const Lottie = ({
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    lottie.loadAnimation({
-      container: containerRef.current as HTMLDivElement,
-      loop: true,
-      autoplay: true,
-      animationData,
-      rendererSettings: { preserveAspectRatio: 'none' },
-    });
+    if (containerRef.current !== null) {
+      lottie.loadAnimation({
+        container: containerRef.current as HTMLDivElement,
+        loop: true,
+        autoplay: true,
+        animationData,
+        rendererSettings: { preserveAspectRatio: 'none' },
+      });
+      lottie.setSpeed(0.2);
+    }
+    return () => lottie.destroy();
   }, [containerRef]);
   return <StyledLottie ref={containerRef} width={width} height={height} />;
 };
