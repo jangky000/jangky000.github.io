@@ -4,9 +4,15 @@ import { StyledLottie } from './style';
 
 interface LottieProps {
   animationData: unknown;
+  width: string;
+  height: string;
 }
 
-const Lottie = ({ animationData }: LottieProps): ReactElement => {
+const Lottie = ({
+  animationData,
+  width,
+  height,
+}: LottieProps): ReactElement => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -15,9 +21,10 @@ const Lottie = ({ animationData }: LottieProps): ReactElement => {
       loop: true,
       autoplay: true,
       animationData,
+      rendererSettings: { preserveAspectRatio: 'none' },
     });
   }, [containerRef]);
-  return <StyledLottie ref={containerRef} />;
+  return <StyledLottie ref={containerRef} width={width} height={height} />;
 };
 
 export default Lottie;
