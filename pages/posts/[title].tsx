@@ -47,7 +47,10 @@ const Posts = ({ postInfo }: PostsProps): ReactElement => {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://jangky000.github.io" />
         <meta property="og:title" content={postInfo.title} />
-        {/* <meta property="og:image" content="" /> */}
+        <meta
+          property="og:image"
+          content="https://user-images.githubusercontent.com/46799722/170039589-53960bc6-5d7c-4558-a752-1a426e63b7d5.png"
+        />
         <meta property="og:description" content={postInfo.desc} />
         <meta property="og:site_name" content="FE 블로그 | @jangky000" />
         <meta property="og:locale" content="ko_KR" />
@@ -58,7 +61,10 @@ const Posts = ({ postInfo }: PostsProps): ReactElement => {
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content={postInfo.title} />
         <meta name="twitter:description" content={postInfo.desc} />
-        {/* <meta name="twitter:image" content="" /> */}
+        <meta
+          name="twitter:image"
+          content="https://user-images.githubusercontent.com/46799722/170039589-53960bc6-5d7c-4558-a752-1a426e63b7d5.png"
+        />
       </Head>
 
       <Header />

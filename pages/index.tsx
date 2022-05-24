@@ -48,7 +48,10 @@ const Home = (): ReactElement => {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://jangky000.github.io" />
         <meta property="og:title" content="FE 블로그 | @jangky000" />
-        {/* <meta property="og:image" content="" /> */}
+        <meta
+          property="og:image"
+          content="https://user-images.githubusercontent.com/46799722/170039589-53960bc6-5d7c-4558-a752-1a426e63b7d5.png"
+        />
         <meta
           property="og:description"
           content="FE 개발자로 일하면서 겪은 경험담을 정리합니다."
@@ -65,7 +68,10 @@ const Home = (): ReactElement => {
           name="twitter:description"
           content="FE 개발자로 일하면서 겪은 경험담을 정리합니다."
         />
-        {/* <meta name="twitter:image" content="" /> */}
+        <meta
+          name="twitter:image"
+          content="https://user-images.githubusercontent.com/46799722/170039589-53960bc6-5d7c-4558-a752-1a426e63b7d5.png"
+        />
       </Head>
 
       <Header />
