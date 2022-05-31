@@ -10,6 +10,7 @@ import usePostList from 'hooks/usePostList';
 import { TabContext, TabList, TabPanel } from '@material-ui/lab';
 import { Tab } from '@material-ui/core';
 import { useTheme } from '@emotion/react';
+import { GNB } from '@components/GNB';
 
 const Home = (): ReactElement => {
   const theme = useTheme();
@@ -74,16 +75,12 @@ const Home = (): ReactElement => {
         />
       </Head>
 
+      {/* <GNB /> */}
+
       <Header />
 
       <animated.div style={fadeInStyle}>
         <StyledHomeLayout>
-          <div className="introduce">
-            <div>Welcome!</div>
-            <div>FE 블로그 | @jangky000</div>
-            <div>FE 개발자로 일하면서 겪은 경험담을 정리합니다.</div>
-          </div>
-
           <div>
             <div className="postlist">
               <TabContext value={value}>
