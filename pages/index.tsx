@@ -75,7 +75,7 @@ const Home = (): ReactElement => {
         />
       </Head>
 
-      {/* <GNB /> */}
+      <GNB />
 
       <Header />
 
