@@ -4,10 +4,24 @@ const { withSentryConfig } = require('@sentry/nextjs');
 const moduleExports = {
   reactStrictMode: true,
   webpack: (config, { isServer }) => {
+    const customedConfig = { ...config };
     if (isServer) {
       require('./scripts/sitemap-generator');
+    } else {
+      customedConfig.resolve.fallback = {
+        fs: false,
+        domain: false,
+        http: false,
+        https: false,
+        path: false,
+        os: false,
+        stream: false,
+        zlib: false,
+        net: false,
+        tls: false,
+      };
     }
-    return config;
+    return customedConfig;
   },
 };
 
