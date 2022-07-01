@@ -1,4 +1,5 @@
 import { Footer } from '@components/Footer';
+import { GNB } from '@components/GNB';
 import { Header } from '@components/Header';
 import { ReactElement } from 'react';
 import { Utterances } from 'utterances-react-component';
@@ -10,9 +11,11 @@ interface Props {
 function GalleryDetailLayout({ children }: Props) {
   return (
     <StyledGalleryDetailLayout>
+      <GNB />
+
       <Header />
 
-      <div>{children}</div>
+      <div className="gallery-content">{children}</div>
 
       <Utterances
         repo="jangky000/jangky000.github.io"

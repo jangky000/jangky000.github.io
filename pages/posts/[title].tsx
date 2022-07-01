@@ -13,6 +13,7 @@ import { removeSpace } from 'libs/utf8';
 import { Post } from 'types/post';
 import usePostList from 'hooks/usePostList';
 import { Utterances } from 'utterances-react-component';
+import { GNB } from '@components/GNB';
 
 interface PostsProps {
   postInfo: Post;
@@ -66,6 +67,8 @@ const Posts = ({ postInfo }: PostsProps): ReactElement => {
           content="https://user-images.githubusercontent.com/46799722/170039589-53960bc6-5d7c-4558-a752-1a426e63b7d5.png"
         />
       </Head>
+
+      <GNB />
 
       <Header />
 

@@ -24,6 +24,7 @@
     "@material-ui/lab": "^4.0.0-alpha.60",
     "@sentry/nextjs": "^7.1.1",
     "axios": "^0.21.1",
+    "d3": "6.7.0",
     "lodash": "^4.17.21",
     "lottie-web": "^5.9.4",
     "moment": "^2.29.1",
@@ -42,6 +43,7 @@
   "devDependencies": {
     "@emotion/babel-plugin": "^11.3.0",
     "@emotion/eslint-plugin": "^11.2.0",
+    "@types/d3": "6.7.0",
     "@types/lodash": "^4.14.172",
     "@types/qs": "^6.9.7",
     "@types/react": "17.0.14",

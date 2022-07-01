@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import DIMENS from '@styles/dimens';
 
 export const StyledGNB = styled.div`
   label: gnb;
@@ -8,8 +9,8 @@ export const StyledGNB = styled.div`
   gap: 1rem;
 
   margin: 0 auto;
-  width: 80%;
-  max-width: 850px;
+  width: ${DIMENS.CONTENT_WIDTH};
+  max-width: ${DIMENS.CONTENT_MAX_WIDTH};
 
   a {
     font-size: 0.8rem;

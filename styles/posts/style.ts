@@ -1,11 +1,12 @@
 import styled from '@emotion/styled';
+import DIMENS from '@styles/dimens';
 
 export const StyledPostLayout = styled.main`
   label: post-layout;
 
   margin: 30px auto;
-  max-width: 850px;
-  width: 80%;
+  max-width: ${DIMENS.CONTENT_MAX_WIDTH};
+  width: ${DIMENS.CONTENT_WIDTH};
 
   img {
     max-width: 100%;

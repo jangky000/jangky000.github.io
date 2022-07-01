@@ -1,3 +1,4 @@
+import DIMENS from '@styles/dimens';
 import css from 'styled-jsx/css';
 
 export const style = css`
@@ -12,8 +13,8 @@ export const style = css`
     padding: 0 16px;
     position: relative;
     margin: 0 auto;
-    width: 80%;
-    max-width: 850px;
+    width: ${DIMENS.CONTENT_WIDTH};
+    max-width: ${DIMENS.CONTENT_MAX_WIDTH};
   }
 
   .lottie-wrapper {

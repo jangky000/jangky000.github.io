@@ -1,12 +1,14 @@
 import { Footer } from '@components/Footer';
+import { GNB } from '@components/GNB';
 import { Header } from '@components/Header';
 import { Grid } from '@material-ui/core';
 import { StyledGalleryListLayout } from '@styles/galleries/style';
+import Link from 'next/link';
 import { meta as d3Meta } from './d3Pie';
 
 function GalleryList() {
   const renderList = () => {
-    const list = [d3Meta, d3Meta, d3Meta, d3Meta, d3Meta];
+    const list = [d3Meta];
 
     // const handleImgError = (e) => {
     //   e.target.src = '/favicon.ico';
@@ -17,13 +19,18 @@ function GalleryList() {
         {list.map(item => (
           <Grid key={item.title} item xs={4} sm={3} md={2}>
             <div className="card">
-              <img
-                className="thumbnail"
-                src={item.thumbnail}
-                alt={item.title}
-                // onError={handleImgError}
-              />
-              <div className="title">{item.title}</div>
+              <Link href={`/galleries/${item.subUrl}`}>
+                <a>
+                  <div className="thumbnail">
+                    <img
+                      src={item.thumbnail}
+                      alt={item.title}
+                      // onError={handleImgError}
+                    />
+                  </div>
+                  <div className="title">{item.title}</div>
+                </a>
+              </Link>
             </div>
           </Grid>
         ))}
@@ -33,6 +40,8 @@ function GalleryList() {
 
   return (
     <>
+      <GNB />
+
       <Header />
 
       <StyledGalleryListLayout>{renderList()}</StyledGalleryListLayout>
