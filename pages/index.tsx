@@ -1,16 +1,17 @@
-import Head from 'next/head';
-import { useState, ReactElement } from 'react';
-import { StyledHomeLayout } from '@styles/home/style';
 import { Footer } from '@components/Footer';
-import { Header } from '@components/Header';
-import styles from '@styles/Index.module.scss';
-import { animated, useSpring } from 'react-spring';
-import PostList from '@components/PostList';
-import usePostList from 'hooks/usePostList';
-import { TabContext, TabList, TabPanel } from '@material-ui/lab';
-import { Tab } from '@material-ui/core';
-import { useTheme } from '@emotion/react';
 import { GNB } from '@components/GNB';
+import { Header } from '@components/Header';
+import PostList from '@components/PostList';
+import Seo from '@components/Seo';
+import { useTheme } from '@emotion/react';
+import { Tab } from '@material-ui/core';
+import { TabContext, TabList, TabPanel } from '@material-ui/lab';
+import { StyledHomeLayout } from '@styles/home/style';
+import styles from '@styles/Index.module.scss';
+import usePostList from 'hooks/usePostList';
+import Head from 'next/head';
+import { ReactElement, useState } from 'react';
+import { animated, useSpring } from 'react-spring';
 
 const Home = (): ReactElement => {
   const theme = useTheme();
@@ -29,50 +30,7 @@ const Home = (): ReactElement => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>FE 블로그 | @jangky000</title>
-        <meta name="title" content="FE 블로그 | @jangky000" />
-        <meta
-          name="keywords"
-          content="FE, ReactJS, NextJS, javascript, typescript"
-        />
-        <meta
-          name="description"
-          content="FE 개발자로 일하면서 겪은 경험담을 정리합니다."
-        />
-        <meta httpEquiv="Title" content="FE 블로그" />
-        <meta
-          httpEquiv="Subject"
-          content="FE 개발자로 일하면서 겪은 경험담을 정리합니다."
-        />
-
-        {/* 기본 설정, 구글, 페이스북, 네이버, 카카오 ... */}
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://jangky000.github.io" />
-        <meta property="og:title" content="FE 블로그 | @jangky000" />
-        <meta
-          property="og:image"
-          content="https://user-images.githubusercontent.com/46799722/170039589-53960bc6-5d7c-4558-a752-1a426e63b7d5.png"
-        />
-        <meta
-          property="og:description"
-          content="FE 개발자로 일하면서 겪은 경험담을 정리합니다."
-        />
-        <meta property="og:site_name" content="FE 블로그 | @jangky000" />
-        <meta property="og:locale" content="ko_KR" />
-        <meta property="og:image:width" content="316" />
-        <meta property="og:image:height" content="562" />
-
-        {/* 트위터 */}
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:title" content="FE 블로그 | @jangky000" />
-        <meta
-          name="twitter:description"
-          content="FE 개발자로 일하면서 겪은 경험담을 정리합니다."
-        />
-        <meta
-          name="twitter:image"
-          content="https://user-images.githubusercontent.com/46799722/170039589-53960bc6-5d7c-4558-a752-1a426e63b7d5.png"
-        />
+        <Seo />
       </Head>
 
       <GNB />
