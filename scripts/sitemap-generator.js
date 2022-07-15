@@ -17,7 +17,7 @@ const formatted = sitemap => prettier.format(sitemap, { parser: 'html' });
     path.join(__dirname, '../pages/*.tsx'),
     // exclude
     path.join('!', __dirname, '../pages/_*.tsx'),
-    path.join('!', __dirname, '../pages/**/[title].tsx'),
+    path.join('!', __dirname, '../pages/**/[[]*.tsx'),
   ]);
 
   const mainSitemap = `
