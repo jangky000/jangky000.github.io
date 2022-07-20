@@ -35,7 +35,7 @@ const Posts = ({ postInfo }: PostsProps): ReactElement => {
   return (
     <div className={styles.container}>
       <Head>
-        <Seo detailInfo={postInfo} />
+        <Seo seoInfo={postInfo} />
       </Head>
 
       <GNB />
