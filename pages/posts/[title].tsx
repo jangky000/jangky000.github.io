@@ -7,7 +7,6 @@ import { StyledPostLayout } from '@styles/posts/style';
 import usePostList from 'hooks/usePostList';
 import { removeSpace } from 'libs/utf8';
 import { GetStaticPropsContext } from 'next';
-import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { ReactElement } from 'react';
 import ReactMarkdown from 'react-markdown';
@@ -34,9 +33,7 @@ const Posts = ({ postInfo }: PostsProps): ReactElement => {
 
   return (
     <div className={styles.container}>
-      <Head>
-        <Seo seoInfo={postInfo} />
-      </Head>
+      <Seo seoInfo={postInfo} />
 
       <GNB />
 

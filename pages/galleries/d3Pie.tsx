@@ -1,7 +1,6 @@
 import PieChart from '@components/PieChart';
 import Seo from '@components/Seo';
 import GalleryDetailLayout from 'layouts/GalleryDetailLayout';
-import Head from 'next/head';
 import { ReactElement } from 'react';
 
 export const meta = {
@@ -15,9 +14,7 @@ export const meta = {
 function D3Pie(): ReactElement {
   return (
     <GalleryDetailLayout>
-      <Head>
-        <Seo seoInfo={meta} />
-      </Head>
+      <Seo seoInfo={meta} />
 
       <PieChart />
     </GalleryDetailLayout>

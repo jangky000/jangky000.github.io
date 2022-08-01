@@ -9,7 +9,6 @@ import { TabContext, TabList, TabPanel } from '@material-ui/lab';
 import { StyledHomeLayout } from '@styles/home/style';
 import styles from '@styles/Index.module.scss';
 import usePostList from 'hooks/usePostList';
-import Head from 'next/head';
 import { ReactElement, useState } from 'react';
 import { animated, useSpring } from 'react-spring';
 
@@ -29,9 +28,7 @@ const Home = (): ReactElement => {
 
   return (
     <div className={styles.container}>
-      <Head>
-        <Seo />
-      </Head>
+      <Seo />
 
       <GNB />
 
