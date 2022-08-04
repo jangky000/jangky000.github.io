@@ -12,12 +12,12 @@ export const StyledGalleryListLayout = styled.div`
     border: 1px solid #ddd;
 
     .thumbnail {
-      // aspect-ratio: 1 / 1;
-      overflow: hidden;
+      aspect-ratio: 1 / 1;
 
       img {
+        object-fit: cover;
         width: 100%;
-        height: auto;
+        height: 100%;
       }
     }
 

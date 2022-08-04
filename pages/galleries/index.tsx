@@ -1,6 +1,7 @@
 import { Footer } from '@components/Footer';
 import { GNB } from '@components/GNB';
 import { Header } from '@components/Header';
+import Seo from '@components/Seo';
 import { Grid } from '@material-ui/core';
 import { StyledGalleryListLayout } from '@styles/galleries/style';
 import Link from 'next/link';
@@ -40,12 +41,10 @@ function GalleryList() {
 
   return (
     <>
+      <Seo />
       <GNB />
-
       <Header />
-
       <StyledGalleryListLayout>{renderList()}</StyledGalleryListLayout>
-
       <Footer />
     </>
   );
