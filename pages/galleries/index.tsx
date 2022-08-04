@@ -18,7 +18,7 @@ function GalleryList() {
     return (
       <Grid container spacing={1}>
         {list.map(item => (
-          <Grid key={item.title} item xs={4} sm={3} md={2}>
+          <Grid key={item.title} item xs={6} sm={4} md={3}>
             <div className="card">
               <Link href={`/galleries/${item.subUrl}`}>
                 <a>
