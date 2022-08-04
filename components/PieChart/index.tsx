@@ -1,6 +1,6 @@
-import { MouseEvent, ReactElement, useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 import { PieArcDatum } from 'd3-shape';
+import { MouseEvent, ReactElement, useEffect, useRef } from 'react';
 
 interface Data {
   label: string;
@@ -259,7 +259,7 @@ function PieChart(): ReactElement {
     return () => window.removeEventListener('resize', drawLineChart);
   }, []);
 
-  return <div ref={divRef} style={{ width: '500px', height: '300px' }} />;
+  return <div ref={divRef} style={{ width: '100%', aspectRatio: '2 / 1' }} />;
 }
 
 export default PieChart;

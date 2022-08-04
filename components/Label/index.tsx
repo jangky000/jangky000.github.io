@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { HTMLProps, ReactNode } from 'react';
 import { style } from './style';
 
 const colors = {
@@ -16,7 +16,7 @@ const colors = {
   },
 };
 
-interface LabelProps {
+interface LabelProps extends HTMLProps<HTMLButtonElement> {
   label: 'new' | 'reference' | 'summary';
   children: ReactNode;
 }
