@@ -6,5 +6,6 @@ export const style = css`
     font-weight: bold;
     opacity: 0.8;
     padding: 0 0.5rem;
+    font-size: 0.8rem;
   }
 `;

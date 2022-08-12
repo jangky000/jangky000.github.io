@@ -2,10 +2,11 @@ import Card from '@components/Card';
 import { Grid } from '@material-ui/core';
 import GalleryListLayout from 'layouts/GalleryListLayout';
 import Link from 'next/link';
-import { meta as d3Meta } from './d3Pie';
+import { meta as d3HorizontalBarChart } from './d3-horizontal-bar-chart';
+import { meta as d3LabeledPieChartMeta } from './d3-labeled-pie-chart';
 
 function GalleryList() {
-  const list = [d3Meta];
+  const list = [d3LabeledPieChartMeta, d3HorizontalBarChart];
 
   return (
     <GalleryListLayout>

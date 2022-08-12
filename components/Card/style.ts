@@ -21,6 +21,7 @@ export const StyledCard = styled.div`
 
     img {
       object-fit: cover;
+      aspect-ratio: 1 / 1;
       width: 100%;
       height: 100%;
       transition: all 0.3s ease-out;

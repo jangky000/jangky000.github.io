@@ -2,12 +2,12 @@ import * as d3 from 'd3';
 import { PieArcDatum } from 'd3-shape';
 import { MouseEvent, ReactElement, useEffect, useRef } from 'react';
 
-interface Data {
+interface Datum {
   label: string;
   value: number;
 }
 
-const mockData: Data[] = [
+const mockData: Datum[] = [
   {
     label: '1개',
     value: 1230,
@@ -41,7 +41,11 @@ const colors = [
 
 const tooltipBorder = '#dddddd';
 
-function PieChart(): ReactElement {
+export interface Props {
+  pieData?: Datum[];
+}
+
+function LabeledPieChart({ pieData = mockData }: Props): ReactElement {
   const divRef = useRef<HTMLDivElement>(null);
 
   // config
@@ -86,11 +90,11 @@ function PieChart(): ReactElement {
   // data
   const getPieData = () => {
     const pieGenerator = d3
-      .pie<Data>()
+      .pie<Datum>()
       .value(d => d.value)
       .sort(null);
 
-    const data = pieGenerator(mockData);
+    const data = pieGenerator(pieData);
     return data;
   };
 
@@ -100,7 +104,7 @@ function PieChart(): ReactElement {
     svgWidth: number,
     svgHeight: number,
     radius: number,
-    data: d3.PieArcDatum<Data>[],
+    data: d3.PieArcDatum<Datum>[],
   ) => {
     const sliceGroup = svg
       .append('g')
@@ -108,7 +112,7 @@ function PieChart(): ReactElement {
       .attr('transform', `translate(${svgWidth / 2},${svgHeight / 2})`);
 
     const arcGenerator = d3
-      .arc<PieArcDatum<Data>>()
+      .arc<PieArcDatum<Datum>>()
       .innerRadius(0)
       .outerRadius(radius * pieK);
 
@@ -124,7 +128,7 @@ function PieChart(): ReactElement {
       .style('stroke-width', '2px')
       .on(
         'mouseenter',
-        (event: MouseEvent<HTMLElement>, d: d3.PieArcDatum<Data>) => {
+        (event: MouseEvent<HTMLElement>, d: d3.PieArcDatum<Datum>) => {
           d3.select(event.currentTarget)
             .style('opacity', 0.5)
             .style('cursor', 'pointer');
@@ -152,7 +156,7 @@ function PieChart(): ReactElement {
       });
   };
 
-  const midAngle = (d: d3.PieArcDatum<Data>) => {
+  const midAngle = (d: d3.PieArcDatum<Datum>) => {
     return d.startAngle + (d.endAngle - d.startAngle) / 2;
   };
 
@@ -162,7 +166,7 @@ function PieChart(): ReactElement {
     svgWidth: number,
     svgHeight: number,
     radius: number,
-    data: d3.PieArcDatum<Data>[],
+    data: d3.PieArcDatum<Datum>[],
   ) => {
     const labelGroup = svg
       .append('g')
@@ -170,7 +174,7 @@ function PieChart(): ReactElement {
       .attr('transform', `translate(${svgWidth / 2},${svgHeight / 2})`);
 
     const labelArcGenerator = d3
-      .arc<PieArcDatum<Data>>()
+      .arc<PieArcDatum<Datum>>()
       .innerRadius(radius * labelK)
       .outerRadius(radius * labelK);
 
@@ -197,7 +201,7 @@ function PieChart(): ReactElement {
     svgWidth: number,
     svgHeight: number,
     radius: number,
-    data: d3.PieArcDatum<Data>[],
+    data: d3.PieArcDatum<Datum>[],
   ) => {
     const lineGroup = svg
       .append('g')
@@ -205,12 +209,12 @@ function PieChart(): ReactElement {
       .attr('transform', `translate(${svgWidth / 2},${svgHeight / 2})`);
 
     const lineArcGenerator = d3
-      .arc<PieArcDatum<Data>>()
+      .arc<PieArcDatum<Datum>>()
       .innerRadius(radius * pieK)
       .outerRadius(radius * pieK);
 
     const labelArcGenerator = d3
-      .arc<PieArcDatum<Data>>()
+      .arc<PieArcDatum<Datum>>()
       .innerRadius(radius * labelK)
       .outerRadius(radius * labelK);
 
@@ -262,4 +266,4 @@ function PieChart(): ReactElement {
   return <div ref={divRef} style={{ width: '100%', aspectRatio: '2 / 1' }} />;
 }
 
-export default PieChart;
+export default LabeledPieChart;
