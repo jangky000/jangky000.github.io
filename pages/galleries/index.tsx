@@ -1,6 +1,7 @@
 import { Footer } from '@components/Footer';
 import { GNB } from '@components/GNB';
 import { Header } from '@components/Header';
+import { Label } from '@components/Label';
 import Seo from '@components/Seo';
 import { Grid } from '@material-ui/core';
 import { StyledGalleryListLayout } from '@styles/galleries/style';
@@ -19,9 +20,9 @@ function GalleryList() {
       <Grid container spacing={1}>
         {list.map(item => (
           <Grid key={item.title} item xs={6} sm={4} md={3}>
-            <div className="card">
-              <Link href={`/galleries/${item.subUrl}`}>
-                <a>
+            <Link href={`/galleries/${item.subUrl}`}>
+              <a>
+                <div className="card">
                   <div className="thumbnail">
                     <img
                       src={item.thumbnail}
@@ -30,9 +31,14 @@ function GalleryList() {
                     />
                   </div>
                   <div className="title">{item.title}</div>
-                </a>
-              </Link>
-            </div>
+                  <div className="tag-list">
+                    {item.tagList.map(tag => (
+                      <Label label="reference"># {tag}</Label>
+                    ))}
+                  </div>
+                </div>
+              </a>
+            </Link>
           </Grid>
         ))}
       </Grid>

@@ -5,8 +5,9 @@ import { ReactElement } from 'react';
 
 export const meta = {
   subUrl: 'd3Pie',
-  title: 'React d3 파이 차트',
-  desc: 'd3.js를 활용하여 React 파이 차트 컴포넌트 만들기',
+  title: '라벨이 있는 파이 차트',
+  tagList: ['React', 'D3.js', 'SVG'],
+  desc: 'React D3 라벨이 있는 파이 차트',
   thumbnail:
     'https://user-images.githubusercontent.com/46799722/176882471-f396607f-929e-40e1-8057-09892b403db7.png',
   code: 'https://github.com/jangky000/jangky000.github.io/blob/main/components/PieChart/index.tsx',

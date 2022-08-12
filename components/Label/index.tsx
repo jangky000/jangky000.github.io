@@ -1,7 +1,7 @@
 import { HTMLProps, ReactNode } from 'react';
 import { style } from './style';
 
-const colors = {
+const Colors = {
   new: {
     bgc: '#ec2F4B',
     c: '#fff',
@@ -17,7 +17,7 @@ const colors = {
 };
 
 interface LabelProps extends HTMLProps<HTMLButtonElement> {
-  label: 'new' | 'reference' | 'summary';
+  label: keyof typeof Colors;
   children: ReactNode;
 }
 export const Label = ({ label, children }: LabelProps) => (
@@ -27,8 +27,8 @@ export const Label = ({ label, children }: LabelProps) => (
     <style jsx>
       {`
         span {
-          background-color: ${colors[label].bgc};
-          color: ${colors[label].c};
+          background-color: ${Colors[label].bgc};
+          color: ${Colors[label].c};
         }
       `}
     </style>
