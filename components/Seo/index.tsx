@@ -43,7 +43,7 @@ function Seo({ seoInfo }: Props) {
       <meta property="og:image:height" content="562" />
 
       {/* 트위터 */}
-      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={desc} />
       <meta

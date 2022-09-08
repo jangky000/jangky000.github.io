@@ -10,7 +10,7 @@ export const StyledGalleryDetailLayout = styled.div`
 
   .gallery-content {
     flex: 1;
-    margin: 0 auto;
+    margin: 20px auto;
     max-width: ${DIMENS.CONTENT_MAX_WIDTH};
     width: ${DIMENS.CONTENT_WIDTH};
     display: flex;
