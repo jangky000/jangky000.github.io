@@ -1,3 +1,4 @@
+import { config } from 'config';
 import Head from 'next/head';
 
 interface SeoInfo {
@@ -9,9 +10,8 @@ interface Props {
 }
 
 function Seo({ seoInfo }: Props) {
-  const title = seoInfo?.title ?? 'FE 블로그 | @jangky000';
-  const desc =
-    seoInfo?.desc ?? 'FE 개발자로 일하면서 겪은 경험담을 정리합니다.';
+  const title = seoInfo?.title ?? config.title;
+  const desc = seoInfo?.desc ?? config.description;
   const type = seoInfo?.desc ? 'article' : 'website';
 
   return (
@@ -37,7 +37,7 @@ function Seo({ seoInfo }: Props) {
         content="https://user-images.githubusercontent.com/46799722/170039589-53960bc6-5d7c-4558-a752-1a426e63b7d5.png"
       />
       <meta property="og:description" content={desc} />
-      <meta property="og:site_name" content="FE 블로그 | @jangky000" />
+      <meta property="og:site_name" content={config.title} />
       <meta property="og:locale" content="ko_KR" />
       <meta property="og:image:width" content="316" />
       <meta property="og:image:height" content="562" />

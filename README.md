@@ -1,7 +1,7 @@
-# FE 블로그
+# FE는 철
 
 > Welcome!
-FE 블로그 | @jangky000
+FE는 철 | @jangky000
 FE 개발자로 일하면서 겪은 경험담을 정리합니다.
 
 ## 사용법

@@ -1,7 +1,8 @@
 import Lottie from '@components/Lottie';
-import Link from 'next/link';
-import seaWavesLottie from '@public/sea-waves.json';
 import palmLottie from '@public/palm-lottie.json';
+import seaWavesLottie from '@public/sea-waves.json';
+import { config } from 'config';
+import Link from 'next/link';
 import { style } from './style';
 
 export const Header = () => (
@@ -14,12 +15,10 @@ export const Header = () => (
         <Link href="/">
           <a>
             <Lottie animationData={palmLottie} width="70px" height="70px" />
-            <b>FE 블로그</b>
+            <b>{config.title}</b>
           </a>
         </Link>
-        <div className="desc">
-          FE 개발자로 일하면서 겪은 경험담을 정리합니다.
-        </div>
+        <div className="desc">{config.description}</div>
       </div>
     </div>
     <style jsx>{style}</style>
