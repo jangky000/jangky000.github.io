@@ -1,6 +1,7 @@
 import { Footer } from '@components/Footer';
 import { GNB } from '@components/GNB';
 import { Header } from '@components/Header';
+import ScrollProgressBar from '@components/ScrollProgressBar';
 import Seo from '@components/Seo';
 import styles from '@styles/Posts.module.scss';
 import { StyledPostLayout } from '@styles/posts/style';
@@ -33,6 +34,8 @@ const Posts = ({ postInfo }: PostsProps): ReactElement => {
 
   return (
     <div className={styles.container}>
+      <ScrollProgressBar />
+
       <Seo seoInfo={postInfo} />
 
       <GNB />
