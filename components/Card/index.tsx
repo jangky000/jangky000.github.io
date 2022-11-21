@@ -1,8 +1,8 @@
 import { Label } from '@components/Label';
-import { StyledCard } from './style';
+import { StyledCard, StyledEmptyImage } from './style';
 
 interface Props {
-  thumbnail: string;
+  thumbnail?: string;
   title: string;
   tagList: string[];
 }
@@ -11,19 +11,26 @@ function Card({ thumbnail, title, tagList }: Props) {
   //   e.target.src = '/favicon.ico';
   // };
 
+  const renderImage = () =>
+    thumbnail ? (
+      <img
+        src={thumbnail}
+        alt={title}
+        // onError={handleImgError}
+      />
+    ) : (
+      <StyledEmptyImage />
+    );
+
   return (
     <StyledCard>
-      <div className="thumbnail">
-        <img
-          src={thumbnail}
-          alt={title}
-          // onError={handleImgError}
-        />
-      </div>
+      <div className="thumbnail">{renderImage()}</div>
       <div className="title">{title}</div>
       <div className="tag-list">
         {tagList.map(tag => (
-          <Label label="reference"># {tag}</Label>
+          <Label key={tag} label="reference">
+            # {tag}
+          </Label>
         ))}
       </div>
     </StyledCard>

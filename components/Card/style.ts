@@ -33,3 +33,12 @@ export const StyledCard = styled.div`
     gap: 0.5rem;
   }
 `;
+
+export const StyledEmptyImage = styled.div`
+  label: empty-image;
+
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  height: 100%;
+  background-color: #ddd;
+`;

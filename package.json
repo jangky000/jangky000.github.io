@@ -23,6 +23,8 @@
     "@material-ui/core": "^4.12.3",
     "@material-ui/lab": "^4.0.0-alpha.60",
     "@sentry/nextjs": "^7.1.1",
+    "@tensorflow-models/mobilenet": "^2.1.0",
+    "@tensorflow/tfjs": "^4.1.0",
     "axios": "^0.21.1",
     "d3": "6.7.0",
     "lodash": "^4.17.21",
