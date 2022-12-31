@@ -2,10 +2,11 @@ import Card from '@components/Card';
 import { Grid } from '@material-ui/core';
 import GalleryListLayout from 'layouts/GalleryListLayout';
 import Link from 'next/link';
+import { meta as cocoSsdMeta } from './coco-ssd';
 import { meta as mobilenetMeta } from './mobilenet';
 
 function ExperimentalList() {
-  const list = [mobilenetMeta];
+  const list = [mobilenetMeta, cocoSsdMeta];
 
   return (
     <GalleryListLayout>
