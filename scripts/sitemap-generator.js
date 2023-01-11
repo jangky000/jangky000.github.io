@@ -8,7 +8,8 @@ const getDate = new Date().toISOString();
 
 const YOUR_AWESOME_DOMAIN = 'https://jangky000.github.io';
 
-const formatted = sitemap => prettier.format(sitemap, { parser: 'html' });
+const formatted = sitemap =>
+  prettier.format(sitemap, { parser: 'html' }).slice(0, -1);
 
 (async () => {
   const pages = await globby([
@@ -45,14 +46,16 @@ const formatted = sitemap => prettier.format(sitemap, { parser: 'html' });
       .join('')}
   `;
 
-  const postSitemap = postlist.map(
-    post => `
+  const postSitemap = postlist
+    .map(
+      post => `
     <url>
       <loc>${YOUR_AWESOME_DOMAIN}/posts/${post.title.replace(/\s+/g, '')}</loc>
       <lastmod>${getDate}</lastmod>
     </url>
   `,
-  );
+    )
+    .join('');
 
   const generatedSitemap = `
     <?xml version="1.0" encoding="UTF-8"?>
@@ -65,7 +68,7 @@ const formatted = sitemap => prettier.format(sitemap, { parser: 'html' });
       ${pagesSitemap}
       ${postSitemap}
     </urlset>
-  `;
+    `;
 
   const formattedSitemap = [formatted(generatedSitemap)];
 
