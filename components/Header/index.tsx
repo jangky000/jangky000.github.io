@@ -1,7 +1,7 @@
 import Lottie from '@components/Lottie';
 import palmLottie from '@public/palm-lottie.json';
 import seaWavesLottie from '@public/sea-waves.json';
-import { config } from 'config';
+import { CONFIGS } from 'configs';
 import Link from 'next/link';
 import { style } from './style';
 
@@ -15,10 +15,10 @@ export const Header = () => (
         <Link href="/">
           <a>
             <Lottie animationData={palmLottie} width="70px" height="70px" />
-            <b>{config.title}</b>
+            <b>{CONFIGS.title}</b>
           </a>
         </Link>
-        <div className="desc">{config.description}</div>
+        <div className="desc">{CONFIGS.description}</div>
       </div>
     </div>
     <style jsx>{style}</style>

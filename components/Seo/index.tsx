@@ -1,4 +1,4 @@
-import { config } from 'config';
+import { CONFIGS } from 'configs';
 import Head from 'next/head';
 
 interface SeoInfo {
@@ -10,8 +10,8 @@ interface Props {
 }
 
 function Seo({ seoInfo }: Props) {
-  const title = seoInfo?.title ?? config.title;
-  const desc = seoInfo?.desc ?? config.description;
+  const title = seoInfo?.title ?? CONFIGS.title;
+  const desc = seoInfo?.desc ?? CONFIGS.description;
   const type = seoInfo?.desc ? 'article' : 'website';
 
   return (
@@ -37,7 +37,7 @@ function Seo({ seoInfo }: Props) {
         content="https://user-images.githubusercontent.com/46799722/170039589-53960bc6-5d7c-4558-a752-1a426e63b7d5.png"
       />
       <meta property="og:description" content={desc} />
-      <meta property="og:site_name" content={config.title} />
+      <meta property="og:site_name" content={CONFIGS.title} />
       <meta property="og:locale" content="ko_KR" />
       <meta property="og:image:width" content="316" />
       <meta property="og:image:height" content="562" />
@@ -50,6 +50,17 @@ function Seo({ seoInfo }: Props) {
         name="twitter:image"
         content="https://user-images.githubusercontent.com/46799722/170039589-53960bc6-5d7c-4558-a752-1a426e63b7d5.png"
       />
+
+      {/* structured data */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          '@context': 'http://schema.org',
+          '@type': 'Person',
+          name: CONFIGS.author,
+          url: CONFIGS.url,
+          sameAs: [CONFIGS.github],
+        })}
+      </script>
     </Head>
   );
 }
