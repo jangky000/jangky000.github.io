@@ -7,7 +7,7 @@
     "posts": "node scripts/getPosts.js",
     "pages": "node scripts/getPages.js",
     "sitemap": "node scripts/sitemap-generator.js",
-    "prebuild": "yarn run posts && yarn run pages && yarn run sitemap && next build",
+    "prebuild": "yarn run posts && yarn run pages && yarn run sitemap",
     "build": "next build",
     "export": "next export",
     "prestart": "next build",
@@ -27,6 +27,7 @@
     "@tensorflow-models/mobilenet": "^2.1.0",
     "@tensorflow/tfjs": "^4.1.0",
     "axios": "^0.21.1",
+    "cheerio": "^1.0.0-rc.12",
     "d3": "6.7.0",
     "lodash": "^4.17.21",
     "lottie-web": "^5.9.4",
@@ -73,6 +74,6 @@
     "stylelint-order": "^4.1.0",
     "stylelint-prettier": "^1.2.0",
     "stylelint-scss": "^3.19.0",
-    "typescript": "4.3.5"
+    "typescript": "4.7.4"
   }
 }
