@@ -13,10 +13,8 @@ export const Header = () => (
       </div>
       <div className="title">
         <Link href="/">
-          <a>
-            <Lottie animationData={palmLottie} width="70px" height="70px" />
-            <b>{CONFIGS.title}</b>
-          </a>
+          <Lottie animationData={palmLottie} width="70px" height="70px" />
+          <b>{CONFIGS.title}</b>
         </Link>
         <div className="desc">{CONFIGS.description}</div>
       </div>

@@ -14,9 +14,7 @@ function ExperimentalList() {
         {list.map(item => (
           <Grid key={item.title} item xs={6} sm={4} md={3}>
             <Link href={`/experimentals/${item.subUrl}`}>
-              <a>
-                <Card {...item} />
-              </a>
+              <Card {...item} />
             </Link>
           </Grid>
         ))}

@@ -10,7 +10,7 @@ export const GNB = () => {
     <StyledGNB>
       {navList.map(nav => (
         <Link key={nav.key} href={nav.path}>
-          <a>{nav.label}</a>
+          {nav.label}
         </Link>
       ))}
     </StyledGNB>

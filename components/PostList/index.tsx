@@ -17,7 +17,7 @@ const PostList = ({ postList }: PostListProps): ReactElement => {
               href="/posts/[title]"
               as={`/posts/${removeSpace(post.title)}`}
             >
-              <a>{post.title}</a>
+              {post.title}
             </Link>
             <small>{post.date}</small>
           </h2>
@@ -26,7 +26,7 @@ const PostList = ({ postList }: PostListProps): ReactElement => {
               href="/posts/[title]"
               as={`/posts/${removeSpace(post.title)}`}
             >
-              <a>{post.desc}</a>
+              {post.desc}
             </Link>
           </div>
         </div>
