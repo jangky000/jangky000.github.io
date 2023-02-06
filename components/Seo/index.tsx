@@ -52,15 +52,25 @@ function Seo({ seoInfo }: Props) {
       />
 
       {/* structured data */}
-      <script type="application/ld+json">
-        {JSON.stringify({
-          '@context': 'http://schema.org',
-          '@type': 'Person',
-          name: CONFIGS.author,
-          url: CONFIGS.url,
-          sameAs: [CONFIGS.github],
-        })}
-      </script>
+      <script
+        type="application/ld+json"
+        /**
+         * NOTE: 기존 방법으로 ld+json을 추가했을 때,
+         * Google Search Console에서 파싱할 수 없는 구조화된 데이터 > 파싱 오류: '}' 또는 개체 구성 요소 이름 누락 에러 발생,
+         * &quot;로 인한 문제로 예상되어 임시적으로 다음과 같이 수정함
+         * https://stackoverflow.com/questions/59318263/how-can-i-use-application-ldjson-in-nextjs
+         */
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'http://schema.org',
+            '@type': 'Person',
+            name: CONFIGS.author,
+            url: CONFIGS.url,
+            sameAs: [CONFIGS.github],
+          }),
+        }}
+      />
     </Head>
   );
 }
