@@ -1,4 +1,6 @@
+import styled from '@emotion/styled';
 import DIMENS from '@styles/dimens';
+import Link from 'next/link';
 import css from 'styled-jsx/css';
 
 export const style = css`
@@ -48,3 +50,9 @@ export const style = css`
     justify-content: center;
   }
 `;
+
+export const HomeLink = styled(Link)({
+  alignItems: 'center',
+  display: 'flex',
+  justifyContent: 'center',
+});
