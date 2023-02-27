@@ -1,4 +1,5 @@
-import { StyledAnchorList, StyledGithubIcon } from './style';
+import GithubCard from '@components/GithubCard';
+import { StyledAnchorList } from './style';
 
 interface Props {
   urls: string[];
@@ -9,16 +10,7 @@ function AnchorList({ urls }: Props) {
       {urls.map(url => {
         return (
           <li key={url}>
-            <a href={url}>
-              <StyledGithubIcon>
-                <img
-                  src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
-                  alt="github-icon"
-                />
-                <div className="title">GitHub</div>
-              </StyledGithubIcon>
-              <div>{url}</div>
-            </a>
+            <GithubCard url={url} />
           </li>
         );
       })}
