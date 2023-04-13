@@ -1,5 +1,6 @@
 import LabeledPieChart from '@components/LabeledPieChart';
 import Seo from '@components/Seo';
+import { CONFIGS } from 'configs';
 import GalleryDetailLayout from 'layouts/GalleryDetailLayout';
 import { ReactElement } from 'react';
 
@@ -10,7 +11,7 @@ export const meta = {
   desc: 'React D3 라벨이 있는 파이 차트',
   thumbnail:
     'https://user-images.githubusercontent.com/46799722/176882471-f396607f-929e-40e1-8057-09892b403db7.png',
-  code: 'https://github.com/jangky000/jangky000.github.io/blob/main/components/LabeledPieChart/index.tsx',
+  code: `${CONFIGS.githubComponentPath}/LabeledPieChart/index.tsx`,
 };
 
 function D3LabeledPieChart(): ReactElement {

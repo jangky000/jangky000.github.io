@@ -1,5 +1,6 @@
 import HorizontalBarChart from '@components/HorizontalBarChart';
 import Seo from '@components/Seo';
+import { CONFIGS } from 'configs';
 import GalleryDetailLayout from 'layouts/GalleryDetailLayout';
 import { ReactElement } from 'react';
 
@@ -10,7 +11,7 @@ export const meta = {
   desc: 'React D3 가로형 바 차트',
   thumbnail:
     'https://user-images.githubusercontent.com/46799722/184296969-de0542a3-d093-45c6-882f-579429cc6656.png',
-  code: 'https://github.com/jangky000/jangky000.github.io/blob/main/components/HorizontalBarChart/index.tsx',
+  code: `${CONFIGS.githubComponentPath}/HorizontalBarChart/index.tsx`,
 };
 
 function D3HorizontalBarChart(): ReactElement {
