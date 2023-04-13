@@ -33,7 +33,7 @@ const Home = ({ urls }: Props): ReactElement => {
 
   return (
     <div className={styles.container}>
-      <Seo />
+      <Seo usePersonRichSnippet />
 
       <GNB />
 
