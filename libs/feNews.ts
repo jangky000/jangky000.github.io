@@ -10,6 +10,8 @@ export async function getFeNews() {
     /issues\/.*20\d{2}-\d{2}.md/.test($(a).attr('href') ?? ''),
   );
   return uniq(
-    validAnchorList.map(a => `https://github.com/${$(a).attr('href')}`),
+    validAnchorList.map(a =>
+      `https://github.com/${$(a).attr('href')}`.replace(/\/\//g, '/'),
+    ),
   );
 }
