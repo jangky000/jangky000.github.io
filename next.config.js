@@ -3,6 +3,9 @@ const { withSentryConfig } = require('@sentry/nextjs');
 
 const moduleExports = {
   reactStrictMode: true,
+  images: {
+    unoptimized: true,
+  },
   webpack: (config, { isServer }) => {
     const customedConfig = { ...config };
     if (isServer) {
