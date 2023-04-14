@@ -1,8 +1,8 @@
 import { keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import Image from 'next/image';
-import { ReactElement } from 'react';
-import CountUp from 'react-countup';
+import { ReactElement, useRef } from 'react';
+import { useCountUp } from 'react-countup';
 
 const showUp = keyframes({
   '0%': {
@@ -48,17 +48,21 @@ function Celebration(props: Props): ReactElement {
   const { scale = 2 } = props;
   const width = 123 * scale;
   const height = 94.09 * scale;
+  const ref = useRef<HTMLDivElement>(null);
+  useCountUp({
+    ref,
+    end: 5,
+    duration: 1,
+    suffix: '번째 방문',
+    delay: 2,
+  });
 
   return (
     <StyledWrapper>
       <StyledTextPosition>
-        <CountUp start={0} end={5} duration={1} suffix="번째 방문" delay={2}>
-          {({ countUpRef }) => (
-            <StyledText scale={scale}>
-              <span ref={countUpRef} />
-            </StyledText>
-          )}
-        </CountUp>
+        <StyledText scale={scale}>
+          <div ref={ref} />
+        </StyledText>
       </StyledTextPosition>
       <Image
         src="/svg/celebration.svg"
