@@ -1,12 +1,11 @@
-import styled from '@emotion/styled';
+import { Stack, styled } from '@mui/material';
 
-export const StyledPostList = styled.div`
+export const StyledPostList = styled(Stack)`
   label: post-list;
 
   .post-item {
     display: flex;
     flex-direction: column;
-    margin-bottom: 2rem;
 
     h2 {
       font-size: 1.2rem;

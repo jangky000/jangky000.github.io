@@ -13,12 +13,6 @@ export const StyledHomeLayout = styled.main`
     margin-bottom: 20px;
   }
 
-  .stack {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-  }
-
   .postlist {
     .tab {
       color: #fff;

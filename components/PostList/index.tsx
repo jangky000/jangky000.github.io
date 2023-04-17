@@ -9,7 +9,7 @@ interface PostListProps {
 }
 const PostList = ({ postList }: PostListProps): ReactElement => {
   return (
-    <StyledPostList>
+    <StyledPostList spacing={2}>
       {postList.map(post => (
         <div key={post.id} className="post-item">
           <h2>

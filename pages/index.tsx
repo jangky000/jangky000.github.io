@@ -8,7 +8,7 @@ import SubTitle from '@components/SubTitle';
 import { useTheme } from '@emotion/react';
 import { getFeNews } from '@libs/feNews';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
-import { Divider, Tab } from '@mui/material';
+import { Divider, Stack, Tab } from '@mui/material';
 import { StyledHomeLayout } from '@styles/home/style';
 import styles from '@styles/Index.module.scss';
 import usePostList from 'hooks/usePostList';
@@ -38,7 +38,7 @@ const Home = ({ urls }: Props): ReactElement => {
       <GNB />
       <Header />
       <StyledHomeLayout>
-        <div className="stack">
+        <Stack spacing={4}>
           <div className="postlist">
             <SubTitle>Posts</SubTitle>
             <TabContext value={value}>
@@ -74,7 +74,7 @@ const Home = ({ urls }: Props): ReactElement => {
             <SubTitle>FE News</SubTitle>
             <AnchorList urls={urls.slice(0, 10)} />
           </div>
-        </div>
+        </Stack>
       </StyledHomeLayout>
       <Footer />
     </div>
