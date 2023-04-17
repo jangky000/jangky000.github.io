@@ -41,18 +41,20 @@ const StyledText = styled('div')<{ scale: number }>(({ scale }) => ({
 }));
 
 interface Props {
+  count: number;
   scale?: number;
 }
 
 function Celebration(props: Props): ReactElement {
-  const { scale = 2 } = props;
+  const { count, scale = 2 } = props;
   const width = 123 * scale;
   const height = 94.09 * scale;
   const ref = useRef<HTMLDivElement>(null);
   useCountUp({
     ref,
-    end: 5,
+    end: count,
     duration: 1,
+    prefix: '오늘만 ',
     suffix: '번째 방문',
     delay: 2,
   });

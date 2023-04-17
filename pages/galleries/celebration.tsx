@@ -18,7 +18,7 @@ function CelebrationPage(): ReactElement {
   return (
     <GalleryDetailLayout url={meta.code}>
       <Seo seoInfo={meta} />
-      <Celebration />
+      <Celebration count={5} />
     </GalleryDetailLayout>
   );
 }

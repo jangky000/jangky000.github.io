@@ -5,14 +5,20 @@ import { Header } from '@components/Header';
 import PostList from '@components/PostList';
 import Seo from '@components/Seo';
 import SubTitle from '@components/SubTitle';
+import VisitCelebration from '@components/VisitCelebration';
 import { useTheme } from '@emotion/react';
+import {
+  canVisitPopup,
+  readAndUpdateVisitCount,
+} from '@libs/experimentalVisit';
 import { getFeNews } from '@libs/feNews';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
 import { Divider, Stack, Tab } from '@mui/material';
 import { StyledHomeLayout } from '@styles/home/style';
 import styles from '@styles/Index.module.scss';
 import usePostList from 'hooks/usePostList';
-import { ReactElement, useState } from 'react';
+import useToggle from 'hooks/useToggle';
+import { ReactElement, useEffect, useState } from 'react';
 import { GalleryListSection } from './galleries';
 
 interface Props {
@@ -26,12 +32,15 @@ const Home = ({ urls }: Props): ReactElement => {
     post => post.category.indexOf('업무 회고') > -1,
   );
   const etcList = postList.filter(post => post.category.indexOf('기타') > -1);
-
   const [value, setValue] = useState('1');
-  const handleChange = (event: any, newValue: any) => {
+  const handleChange = (_: any, newValue: any) => {
     setValue(newValue);
   };
-
+  const { isOn, on } = useToggle();
+  useEffect(() => {
+    const visitCount = readAndUpdateVisitCount();
+    if (canVisitPopup(visitCount)) on();
+  }, []);
   return (
     <div className={styles.container}>
       <Seo usePersonRichSnippet />
@@ -77,6 +86,7 @@ const Home = ({ urls }: Props): ReactElement => {
         </Stack>
       </StyledHomeLayout>
       <Footer />
+      <VisitCelebration isOpen={isOn} />
     </div>
   );
 };
