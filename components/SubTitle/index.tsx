@@ -5,7 +5,7 @@ interface Props {
   children?: ReactNode;
 }
 function SubTitle({ children }: Props) {
-  return <StyledSubTitle>{`${children} !!`}</StyledSubTitle>;
+  return <StyledSubTitle boxShadow={2}>{`${children} !!`}</StyledSubTitle>;
 }
 
 export default SubTitle;

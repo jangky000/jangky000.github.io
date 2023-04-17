@@ -7,12 +7,13 @@ import Seo from '@components/Seo';
 import SubTitle from '@components/SubTitle';
 import { useTheme } from '@emotion/react';
 import { getFeNews } from '@libs/feNews';
-import { Tab } from '@material-ui/core';
+import { Divider, Tab } from '@material-ui/core';
 import { TabContext, TabList, TabPanel } from '@material-ui/lab';
 import { StyledHomeLayout } from '@styles/home/style';
 import styles from '@styles/Index.module.scss';
 import usePostList from 'hooks/usePostList';
 import { ReactElement, useState } from 'react';
+import { GalleryListSection } from './galleries';
 
 interface Props {
   urls: string[];
@@ -34,13 +35,10 @@ const Home = ({ urls }: Props): ReactElement => {
   return (
     <div className={styles.container}>
       <Seo usePersonRichSnippet />
-
       <GNB />
-
       <Header />
-
       <StyledHomeLayout>
-        <div>
+        <div className="stack">
           <div className="postlist">
             <SubTitle>Posts</SubTitle>
             <TabContext value={value}>
@@ -55,7 +53,6 @@ const Home = ({ urls }: Props): ReactElement => {
                 <Tab label={`업무 회고(${reviewList.length})`} value="2" />
                 <Tab label={`기타(${etcList.length})`} value="3" />
               </TabList>
-
               <TabPanel value="1">
                 <PostList postList={postList} />
               </TabPanel>
@@ -67,14 +64,18 @@ const Home = ({ urls }: Props): ReactElement => {
               </TabPanel>
             </TabContext>
           </div>
-
+          <Divider />
+          <div className="galleries">
+            <SubTitle>Galleries</SubTitle>
+            <GalleryListSection />
+          </div>
+          <Divider />
           <div>
             <SubTitle>FE News</SubTitle>
-            <AnchorList urls={urls} />
+            <AnchorList urls={urls.slice(0, 10)} />
           </div>
         </div>
       </StyledHomeLayout>
-
       <Footer />
     </div>
   );

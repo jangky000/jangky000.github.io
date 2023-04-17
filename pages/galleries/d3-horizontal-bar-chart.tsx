@@ -14,7 +14,7 @@ export const meta = {
   code: `${CONFIGS.githubComponentPath}/HorizontalBarChart/index.tsx`,
 };
 
-function D3HorizontalBarChart(): ReactElement {
+function D3HorizontalBarChartPage(): ReactElement {
   return (
     <GalleryDetailLayout url={meta.code}>
       <Seo seoInfo={meta} />
@@ -23,4 +23,4 @@ function D3HorizontalBarChart(): ReactElement {
   );
 }
 
-export default D3HorizontalBarChart;
+export default D3HorizontalBarChartPage;

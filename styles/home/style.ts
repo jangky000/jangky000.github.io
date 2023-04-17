@@ -13,6 +13,12 @@ export const StyledHomeLayout = styled.main`
     margin-bottom: 20px;
   }
 
+  .stack {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
   .postlist {
     .tab {
       color: #fff;
@@ -21,6 +27,9 @@ export const StyledHomeLayout = styled.main`
       margin-bottom: 20px;
       padding: 0.5rem;
       width: fit-content;
+    }
+    .MuiTabPanel-root {
+      padding: 0 0.5rem;
     }
   }
 `;

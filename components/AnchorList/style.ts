@@ -3,7 +3,6 @@ import DIMENS from '@styles/dimens';
 
 export const StyledAnchorList = styled.ul`
   list-style: none;
-  margin: 0.5rem;
   padding: 0.5rem;
   border: 1px solid #ddd;
   border-radius: 0.5rem;

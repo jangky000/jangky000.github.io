@@ -14,7 +14,7 @@ export const meta = {
   code: `${CONFIGS.githubComponentPath}/LabeledPieChart/index.tsx`,
 };
 
-function D3LabeledPieChart(): ReactElement {
+function D3LabeledPieChartPage(): ReactElement {
   return (
     <GalleryDetailLayout url={meta.code}>
       <Seo seoInfo={meta} />
@@ -23,4 +23,4 @@ function D3LabeledPieChart(): ReactElement {
   );
 }
 
-export default D3LabeledPieChart;
+export default D3LabeledPieChartPage;

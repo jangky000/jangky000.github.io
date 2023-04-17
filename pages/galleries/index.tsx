@@ -8,28 +8,33 @@ import { meta as d3LabeledPieChartMeta } from './d3-labeled-pie-chart';
 import { meta as nightSkyMeta } from './night-sky';
 import { meta as SubmarineMeta } from './submarine';
 
-function GalleryList() {
-  const list = [
+export function GalleryListSection() {
+  const metaList = [
     d3LabeledPieChartMeta,
     d3HorizontalBarChartMeta,
     nightSkyMeta,
     SubmarineMeta,
     CelebrationMeta,
   ];
+  return (
+    <Grid container spacing={1}>
+      {metaList.map(item => (
+        <Grid key={item.title} item xs={6} sm={4} md={3}>
+          <Link href={`/galleries/${item.subUrl}`}>
+            <Card {...item} />
+          </Link>
+        </Grid>
+      ))}
+    </Grid>
+  );
+}
 
+function GalleryListPage() {
   return (
     <GalleryListLayout>
-      <Grid container spacing={1}>
-        {list.map(item => (
-          <Grid key={item.title} item xs={6} sm={4} md={3}>
-            <Link href={`/galleries/${item.subUrl}`}>
-              <Card {...item} />
-            </Link>
-          </Grid>
-        ))}
-      </Grid>
+      <GalleryListSection />
     </GalleryListLayout>
   );
 }
 
-export default GalleryList;
+export default GalleryListPage;
