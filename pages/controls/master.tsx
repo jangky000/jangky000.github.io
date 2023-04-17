@@ -1,4 +1,4 @@
-import { Button } from '@material-ui/core';
+import { Button } from '@mui/material';
 import useControlSocket from 'hooks/useControlSocket';
 import CommonLayout from 'layouts/CommonLayout';
 import { ReactElement } from 'react';

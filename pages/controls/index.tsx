@@ -1,4 +1,4 @@
-import { Button } from '@material-ui/core';
+import { Button } from '@mui/material';
 import CommonLayout from 'layouts/CommonLayout';
 import Link from 'next/link';
 

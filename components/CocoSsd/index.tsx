@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import * as cocoSsd from '@tensorflow-models/coco-ssd';
 import '@tensorflow/tfjs';
-import { theme } from '@theme/theme';
+import { theme } from '@theme/emotionTheme';
 import { ReactElement, useEffect, useRef } from 'react';
 import { CocoSsdWrapper, Dimensions } from './style';
 

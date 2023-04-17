@@ -1,5 +1,5 @@
 import Card from '@components/Card';
-import { Grid } from '@material-ui/core';
+import { Grid } from '@mui/material';
 import GalleryListLayout from 'layouts/GalleryListLayout';
 import Link from 'next/link';
 import { meta as CelebrationMeta } from './celebration';

@@ -1,6 +1,6 @@
 import CocoSsd from '@components/CocoSsd';
 import Seo from '@components/Seo';
-import { NoSsr } from '@material-ui/core';
+import { NoSsr } from '@mui/material';
 import GalleryDetailLayout from 'layouts/GalleryDetailLayout';
 import { ReactElement } from 'react';
 
