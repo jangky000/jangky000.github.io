@@ -1,6 +1,6 @@
 import { keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
-import Image from 'next/image';
+import CelebrationSvg from 'public/svg/celebration.svg';
 import { ReactElement, useRef } from 'react';
 import { useCountUp } from 'react-countup';
 
@@ -66,12 +66,7 @@ function Celebration(props: Props): ReactElement {
           <div ref={ref} />
         </StyledText>
       </StyledTextPosition>
-      <Image
-        src="/svg/celebration.svg"
-        alt="celebration"
-        width={width}
-        height={height}
-      />
+      <CelebrationSvg width={width} height={height} />
     </StyledWrapper>
   );
 }

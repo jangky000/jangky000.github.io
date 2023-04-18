@@ -26,7 +26,7 @@
         "react/jsx-filename-extension": ["error", { "extensions": [".tsx"] }],
         "linebreak-style": "off",
         "import/prefer-default-export": "off",
-        "import/extensions": ["error", { "extensions": [".tsx"] }],
+        "import/extensions": ["error", { "extensions": [".tsx" ], "svg": "always" }],
         "import/no-extraneous-dependencies": "off",
         "react/jsx-props-no-spreading":"off",
         "jsx-a11y/anchor-is-valid":"off",

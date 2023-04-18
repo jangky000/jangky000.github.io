@@ -8,6 +8,10 @@ const moduleExports = {
   },
   webpack: (config, { isServer }) => {
     const customedConfig = { ...config };
+    customedConfig.module.rules.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack'],
+    });
     if (isServer) {
       require('./scripts/sitemap-generator');
     } else {
