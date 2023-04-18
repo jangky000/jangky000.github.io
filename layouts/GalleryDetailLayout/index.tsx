@@ -12,21 +12,23 @@ interface Props {
 }
 function GalleryDetailLayout({ url, children }: Props) {
   return (
-    <StyledGalleryDetailLayout>
-      <GNB />
-      <Header />
-      <div className="gallery-content">{children}</div>
-      <div className="gallery-reference">
-        <Label label="reference">Source code</Label>
-        <a href={url}>{url}</a>
-      </div>
+    <>
+      <StyledGalleryDetailLayout>
+        <GNB />
+        <Header />
+        <div className="gallery-content">{children}</div>
+        <div className="gallery-reference">
+          <Label label="reference">Source code</Label>
+          <a href={url}>{url}</a>
+        </div>
+      </StyledGalleryDetailLayout>
       <Utterances
         repo="jangky000/jangky000.github.io"
         theme="github-light"
         issueTerm="pathname"
       />
       <Footer />
-    </StyledGalleryDetailLayout>
+    </>
   );
 }
 

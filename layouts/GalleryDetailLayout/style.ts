@@ -4,7 +4,7 @@ import DIMENS from '@styles/dimens';
 export const StyledGalleryDetailLayout = styled.div`
   label: gallery-detail-layout;
 
-  min-height: calc(var(--vh, 1vh) * 100);
+  min-height: calc(var(--vh, 1vh) * 90);
   display: flex;
   flex-direction: column;
 
