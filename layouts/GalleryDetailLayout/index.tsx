@@ -1,5 +1,4 @@
 import { Footer } from '@components/Footer';
-import { GNB } from '@components/GNB';
 import { Header } from '@components/Header';
 import { Label } from '@components/Label';
 import { ReactNode } from 'react';
@@ -14,7 +13,6 @@ function GalleryDetailLayout({ url, children }: Props) {
   return (
     <>
       <StyledGalleryDetailLayout>
-        <GNB />
         <Header />
         <div className="gallery-content">{children}</div>
         <div className="gallery-reference">

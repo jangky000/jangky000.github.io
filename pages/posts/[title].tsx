@@ -1,5 +1,4 @@
 import { Footer } from '@components/Footer';
-import { GNB } from '@components/GNB';
 import { Header } from '@components/Header';
 import ScrollProgressBar from '@components/ScrollProgressBar';
 import Seo from '@components/Seo';
@@ -35,13 +34,8 @@ const Posts = ({ postInfo }: PostsProps): ReactElement => {
   return (
     <div className={styles.container}>
       <ScrollProgressBar />
-
       <Seo seoInfo={postInfo} />
-
-      <GNB />
-
       <Header />
-
       <animated.div style={fadeInStyle}>
         <StyledPostLayout>
           <div>
@@ -61,7 +55,6 @@ const Posts = ({ postInfo }: PostsProps): ReactElement => {
           </div>
         </StyledPostLayout>
       </animated.div>
-
       <Utterances
         repo="jangky000/jangky000.github.io"
         theme="github-light"

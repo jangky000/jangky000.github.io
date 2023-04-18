@@ -1,6 +1,5 @@
 import AnchorList from '@components/AnchorList';
 import { Footer } from '@components/Footer';
-import { GNB } from '@components/GNB';
 import { Header } from '@components/Header';
 import Seo from '@components/Seo';
 import SubTitle from '@components/SubTitle';
@@ -32,7 +31,6 @@ const Home = ({ urls }: Props): ReactElement => {
   return (
     <div className={styles.container}>
       <Seo usePersonRichSnippet />
-      <GNB />
       <Header />
       <StyledHomeLayout>
         <Stack spacing={4}>
