@@ -1,7 +1,7 @@
 import { ThemeProvider as EmotionThemeProvider } from '@emotion/react';
 import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
 import '@styles/globals.css';
-import { theme } from '@theme/emotionTheme';
+import { emotionTheme } from '@theme/emotionTheme';
 import muiTheme from '@theme/muiTheme';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <MuiThemeProvider theme={muiTheme}>
-        <EmotionThemeProvider theme={theme}>
+        <EmotionThemeProvider theme={emotionTheme}>
           <RecoilRoot>
             <QueryClientProvider client={queryClient}>
               <Hydrate state={pageProps.dehydratedState}>

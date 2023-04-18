@@ -1,4 +1,4 @@
-export interface Palette {
+export interface CustomPalette {
   colors: {
     dark: string;
     green: string;
@@ -15,7 +15,7 @@ export interface Palette {
 }
 
 // 참조: https://color.adobe.com/ko/explore
-export const theme: Palette = {
+export const emotionTheme: CustomPalette = {
   colors: {
     dark: '#95998A',
     green: '#BDCC94',

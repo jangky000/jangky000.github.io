@@ -1,7 +1,9 @@
 import { red } from '@mui/material/colors';
 import { createTheme } from '@mui/material/styles';
+import { emotionTheme } from './emotionTheme';
 
-const theme = createTheme({
+const muiTheme = createTheme({
+  colors: emotionTheme.colors,
   palette: {
     primary: {
       main: '#556cd6',
@@ -15,4 +17,4 @@ const theme = createTheme({
   },
 });
 
-export default theme;
+export default muiTheme;

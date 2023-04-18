@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import * as cocoSsd from '@tensorflow-models/coco-ssd';
 import '@tensorflow/tfjs';
-import { theme } from '@theme/emotionTheme';
+import { emotionTheme } from '@theme/emotionTheme';
 import { ReactElement, useEffect, useRef } from 'react';
 import { CocoSsdWrapper, Dimensions } from './style';
 
@@ -22,11 +22,11 @@ function drawObjectDetectionRects(
   for (let i = 0; i < predictions.length; i += 1) {
     context.beginPath();
     context.lineWidth = 1;
-    context.strokeStyle = theme.colors.green;
+    context.strokeStyle = emotionTheme.colors.green;
     context.rect(...predictions[i].bbox);
     context.stroke();
     context.font = '24px Arial';
-    context.fillStyle = theme.colors.green;
+    context.fillStyle = emotionTheme.colors.green;
     context.fillText(
       `${predictions[i].class} ${Number(predictions[i].score) * 100}%`,
       predictions[i].bbox[0],

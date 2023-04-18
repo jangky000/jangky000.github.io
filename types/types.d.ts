@@ -1,5 +1,16 @@
-import { Palette } from '@theme/emotionTheme';
+import { CustomPalette } from '@theme/emotionTheme';
 
 declare module '@emotion/react' {
-  export interface Theme extends Palette {}
+  interface Theme extends CustomPalette {}
+}
+
+// https://mui.com/material-ui/customization/palette/#adding-new-colors
+declare module '@mui/material/styles' {
+  interface Theme {
+    colors: CustomPalette['colors'];
+  }
+
+  interface ThemeOptions {
+    colors: CustomPalette['colors'];
+  }
 }
