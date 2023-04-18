@@ -12,18 +12,4 @@ export const StyledHomeLayout = styled.main`
     padding: 0.5rem;
     margin-bottom: 20px;
   }
-
-  .postlist {
-    .tab {
-      color: #fff;
-      background-color: ${({ theme }) => theme.colors.dark};
-      border-radius: 4px;
-      margin-bottom: 20px;
-      padding: 0.5rem;
-      width: fit-content;
-    }
-    .MuiTabPanel-root {
-      padding: 0 0.5rem;
-    }
-  }
 `;
