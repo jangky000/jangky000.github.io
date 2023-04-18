@@ -10,4 +10,5 @@ export const StyledSubTitle = styled(Box)`
   width: fit-content;
   padding: 0 0.5rem;
   border-radius: 0.5rem 0;
+  display: inline-block;
 `;

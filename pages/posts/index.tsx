@@ -10,7 +10,6 @@ import { useState } from 'react';
 
 const StyledWrapper = styled.div`
   margin: 30px auto;
-  width: ${DIMENS.CONTENT_WIDTH};
   max-width: ${DIMENS.CONTENT_MAX_WIDTH};
 `;
 

@@ -14,6 +14,7 @@ import { Divider, Stack } from '@mui/material';
 import { StyledHomeLayout } from '@styles/home/style';
 import styles from '@styles/Index.module.scss';
 import useToggle from 'hooks/useToggle';
+import Link from 'next/link';
 import { ReactElement, useEffect } from 'react';
 import { GalleryListSection } from './galleries';
 import { PostListSection } from './posts';
@@ -36,12 +37,16 @@ const Home = ({ urls }: Props): ReactElement => {
       <StyledHomeLayout>
         <Stack spacing={4}>
           <div className="postlist">
-            <SubTitle>Posts</SubTitle>
+            <Link href="/posts">
+              <SubTitle>Posts</SubTitle>
+            </Link>
             <PostListSection />
           </div>
           <Divider />
           <div className="galleries">
-            <SubTitle>Galleries</SubTitle>
+            <Link href="/galleries">
+              <SubTitle>Galleries</SubTitle>
+            </Link>
             <GalleryListSection />
           </div>
           <Divider />
