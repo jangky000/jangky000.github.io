@@ -1,4 +1,4 @@
-import moment from 'moment';
+import { getMoment, getStartOfToday } from 'libs/time';
 import { runOnClientOnly } from './window';
 
 const EXPERIMENTAL_VISIT = 'experimental_visit';
@@ -12,7 +12,7 @@ interface ExperimentalVisit {
 function saveVisitCount(nextCount: number) {
   const visitLab = {
     nextCount,
-    timestamp: moment().startOf('day').valueOf(),
+    timestamp: getStartOfToday().valueOf(),
   };
   runOnClientOnly(() =>
     localStorage.setItem(EXPERIMENTAL_VISIT, JSON.stringify(visitLab)),
@@ -32,10 +32,7 @@ function isVisitLab(rawVisitLab: unknown): rawVisitLab is ExperimentalVisit {
 }
 
 function isExpired(visitLab: ExperimentalVisit): boolean {
-  const diffDay = moment(visitLab.timestamp).diff(
-    moment().startOf('day'),
-    'day',
-  );
+  const diffDay = getMoment(visitLab.timestamp).diff(getStartOfToday(), 'day');
   return diffDay > 1;
 }
 
