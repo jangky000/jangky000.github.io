@@ -1,9 +1,18 @@
 import styled from '@emotion/styled';
 import DIMENS from '@styles/dimens';
 import Link from 'next/link';
-import css from 'styled-jsx/css';
 
-export const style = css`
+export const StyledHeader = styled('header')`
+  width: ${DIMENS.CONTENT_WIDTH};
+  max-width: ${DIMENS.CONTENT_MAX_WIDTH};
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+
+  .theme-switch {
+    align-self: flex-end;
+  }
+
   .wrapper {
     align-items: center;
     background-color: #fff;
@@ -14,9 +23,6 @@ export const style = css`
     justify-content: center;
     padding: 0 16px;
     position: relative;
-    margin: 0 auto;
-    width: ${DIMENS.CONTENT_WIDTH};
-    max-width: ${DIMENS.CONTENT_MAX_WIDTH};
   }
 
   .lottie-wrapper {
@@ -31,6 +37,7 @@ export const style = css`
   .title {
     margin-bottom: 12px;
     z-index: 1;
+    color: #000;
   }
 
   b {

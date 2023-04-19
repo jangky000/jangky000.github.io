@@ -1,34 +1,41 @@
+const CommonThemeColors = {
+  black: '#333',
+  dark: '#95998A',
+  green: '#BDCC94',
+  yellow: '#FFEC67',
+  white: '#FFFFFF',
+  blue: '#A9B6CC',
+  neonRed: '#FF1177',
+  neonBlue: '#228DFF',
+  neonYellow: '#FFDD1B',
+  neonGreen: '#B6FF00',
+  neonOrange: '#FF9900',
+  neonViolet: '#ff00de',
+} as const;
+
+const LightThemeColors = {
+  ...CommonThemeColors,
+  text: CommonThemeColors.black,
+  backgroundColor: CommonThemeColors.white,
+} as const;
+
+const DarkThemeColors = {
+  ...CommonThemeColors,
+  text: CommonThemeColors.white,
+  backgroundColor: CommonThemeColors.black,
+} as const;
+
 export interface CustomPalette {
-  colors: {
-    dark: string;
-    green: string;
-    yellow: string;
-    white: string;
-    blue: string;
-    neonRed: string;
-    neonBlue: string;
-    neonYellow: string;
-    neonGreen: string;
-    neonOrange: string;
-    neonViolet: string;
-  };
+  colors: typeof LightThemeColors | typeof DarkThemeColors;
 }
 
 // 참조: https://color.adobe.com/ko/explore
-export const emotionTheme: CustomPalette = {
-  colors: {
-    dark: '#95998A',
-    green: '#BDCC94',
-    yellow: '#FFEC67',
-    white: '#FFFFFF',
-    blue: '#A9B6CC',
-    neonRed: '#FF1177',
-    neonBlue: '#228DFF',
-    neonYellow: '#FFDD1B',
-    neonGreen: '#B6FF00',
-    neonOrange: '#FF9900',
-    neonViolet: '#ff00de',
-  },
+export const emotionLightTheme: CustomPalette = {
+  colors: LightThemeColors,
+};
+
+export const emotionDarkTheme: CustomPalette = {
+  colors: DarkThemeColors,
 };
 
 export const media = {

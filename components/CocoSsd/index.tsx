@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
+import { Theme, useTheme } from '@emotion/react';
 import * as cocoSsd from '@tensorflow-models/coco-ssd';
 import '@tensorflow/tfjs';
-import { emotionTheme } from '@theme/emotionTheme';
 import { ReactElement, useEffect, useRef } from 'react';
 import { CocoSsdWrapper, Dimensions } from './style';
 
@@ -18,15 +18,16 @@ async function initVideoStream(video: HTMLVideoElement | null) {
 function drawObjectDetectionRects(
   context: CanvasRenderingContext2D,
   predictions: cocoSsd.DetectedObject[],
+  theme: Theme,
 ) {
   for (let i = 0; i < predictions.length; i += 1) {
     context.beginPath();
     context.lineWidth = 1;
-    context.strokeStyle = emotionTheme.colors.green;
+    context.strokeStyle = theme.colors.green;
     context.rect(...predictions[i].bbox);
     context.stroke();
     context.font = '24px Arial';
-    context.fillStyle = emotionTheme.colors.green;
+    context.fillStyle = theme.colors.green;
     context.fillText(
       `${predictions[i].class} ${Number(predictions[i].score) * 100}%`,
       predictions[i].bbox[0],
@@ -38,6 +39,7 @@ function drawObjectDetectionRects(
 function CocoSsd(): ReactElement {
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const theme = useTheme();
 
   const run = async () => {
     const model = await cocoSsd.load();
@@ -55,7 +57,7 @@ function CocoSsd(): ReactElement {
       const predict = async () => {
         context.drawImage(video, 0, 0, video.width, video.height);
         const predictions = await model.detect(canvas);
-        drawObjectDetectionRects(context, predictions);
+        drawObjectDetectionRects(context, predictions, theme);
         requestAnimationFrame(predict);
       };
 

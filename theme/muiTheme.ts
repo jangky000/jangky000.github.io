@@ -1,9 +1,9 @@
 import { red } from '@mui/material/colors';
 import { createTheme } from '@mui/material/styles';
-import { emotionTheme } from './emotionTheme';
+import { emotionDarkTheme, emotionLightTheme } from './emotionTheme';
 
-const muiTheme = createTheme({
-  colors: emotionTheme.colors,
+export const muiLightTheme = createTheme({
+  colors: emotionLightTheme.colors,
   palette: {
     primary: {
       main: '#556cd6',
@@ -14,7 +14,24 @@ const muiTheme = createTheme({
     error: {
       main: red.A400,
     },
+    text: { primary: emotionLightTheme.colors.text },
+    background: { default: emotionLightTheme.colors.backgroundColor },
   },
 });
 
-export default muiTheme;
+export const muiDarkTheme = createTheme({
+  colors: emotionDarkTheme.colors,
+  palette: {
+    primary: {
+      main: '#556cd6',
+    },
+    secondary: {
+      main: '#19857b',
+    },
+    error: {
+      main: red.A400,
+    },
+    text: { primary: emotionDarkTheme.colors.text },
+    background: { default: emotionDarkTheme.colors.backgroundColor },
+  },
+});
