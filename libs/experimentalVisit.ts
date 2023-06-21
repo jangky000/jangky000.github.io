@@ -33,7 +33,7 @@ function isVisitLab(rawVisitLab: unknown): rawVisitLab is ExperimentalVisit {
 
 function isExpired(visitLab: ExperimentalVisit): boolean {
   const diffDay = getMoment(visitLab.timestamp).diff(getStartOfToday(), 'day');
-  return diffDay > 1;
+  return diffDay >= 1;
 }
 
 export function readVisitCount() {
@@ -53,5 +53,5 @@ export function readAndUpdateVisitCount() {
 
 export function canVisitPopup(visitCount: number) {
   console.log('visitCount', visitCount);
-  return visitCount % 5 === 0;
+  return visitCount % 50 === 0;
 }
