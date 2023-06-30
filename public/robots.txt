@@ -2,9 +2,15 @@ User-agent: *
 Disallow: /
 
 User-agent: Googlebot
-Allow : / 
+Allow : /
+Disallow: /controls
+Disallow: /errors
+Disallow: */experimentals
 
 User-agent: Yeti
 Allow: /
+Disallow: /controls
+Disallow: /errors
+Disallow: /experimentals
 
 Sitemap: https://jangky000.github.io/sitemap.xml
