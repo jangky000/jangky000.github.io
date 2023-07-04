@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://_N_E/styles/Posts.module.scss"],"names":[],"mappings":"AAAA,wBACE,gBAAA,CAGF,mBACE,WAAA","file":"static/css/cb5a7feca3fcc903.css","sourcesContent":[".container {\n  min-height: 100vh;\n}\n\n.main {\n  margin: 16px;\n}\n\n"],"sourceRoot":""}
